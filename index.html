@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webdevv · software company</title>
+  <!-- Font Awesome 6 (free) for crisp icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ---------- RESET & GLOBAL ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f7f9fc;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1e293b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* we manually import Inter weight (free) */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ---------- TYPOGRAPHY & LINKS ---------- */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
+
+    .section-desc {
+      font-size: 1.2rem;
+      color: #475569;
+      max-width: 680px;
+      margin-bottom: 3rem;
+    }
+
+    /* ---------- HEADER / NAV (glass effect) ---------- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      transition: color 0.2s;
+    }
+
+    .logo span {
+      color: #2563eb;     /* accent dot / style */
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.8rem;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 0.3rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2.5px;
+      background: #2563eb;
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #0f172a;
+    }
+
+    .btn-outline {
+      border: 1.5px solid #2563eb;
+      color: #2563eb;
+      background: transparent;
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      padding: 5rem 0 4rem 0;
+      background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1 1 400px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-highlight {
+      color: #2563eb;
+      border-bottom: 3px solid #93c5fd;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      color: #475569;
+      max-width: 540px;
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #0f172a;
+      color: white;
+      font-weight: 600;
+      padding: 0.9rem 2.3rem;
+      border-radius: 40px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-primary i {
+      font-size: 0.9rem;
+    }
+
+    .btn-primary:hover {
+      background: #1e293b;
+      transform: scale(1.02);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1.5px solid #cbd5e1;
+      color: #1e293b;
+      font-weight: 600;
+      padding: 0.9rem 2.3rem;
+      border-radius: 40px;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-ghost:hover {
+      border-color: #2563eb;
+      background: #f8fafc;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .stat-item h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .stat-item p {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin: 0;
+    }
+
+    .hero-visual {
+      flex: 1 1 300px;
+      background: linear-gradient(145deg, #2563eb10, #ffffff);
+      border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
+      padding: 2rem;
+      min-height: 240px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 40px 50px -20px rgba(0,70,150,0.2);
+      border: 1px solid #ffffff50;
+    }
+
+    .code-snip {
+      background: #0f172a;
+      color: #a5f3fc;
+      padding: 1.5rem;
+      border-radius: 32px;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.9rem;
+      width: 100%;
+      box-shadow: 0 25px 30px -12px #0f172a40;
+    }
+
+    .code-snip span.keyword { color: #f472b6; }
+    .code-snip span.func { color: #fbbf24; }
+    .code-snip span.string { color: #bef264; }
+
+    /* ---------- SERVICES ---------- */
+    .services {
+      padding: 5rem 0;
+      background: white;
+    }
+
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03);
+      border: 1px solid #eef2f6;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: #2563eb30;
+      box-shadow: 0 25px 30px -12px #2563eb20;
+      transform: translateY(-6px);
+    }
+
+    .card-icon {
+      background: #e6f0ff;
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.7rem;
+    }
+
+    .card-icon i {
+      font-size: 2.2rem;
+      color: #2563eb;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      color: #475569;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-link {
+      color: #2563eb;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card-link i {
+      font-size: 0.8rem;
+      transition: transform 0.15s;
+    }
+
+    .card-link:hover i {
+      transform: translateX(4px);
+    }
+
+    /* ---------- TESTIMONIAL (JavaScript interactive) ---------- */
+    .testimonials {
+      padding: 4rem 0;
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .testimonial-container {
+      max-width: 800px;
+      margin: 2rem auto 0;
+      background: white;
+      border-radius: 3rem;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 20px 35px -8px rgba(0,0,0,0.05);
+      border: 1px solid #e9edf2;
+      text-align: center;
+      position: relative;
+    }
+
+    .testimonial-avatar {
+      width: 80px;
+      height: 80px;
+      background: #2563eb;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 600;
+      box-shadow: 0 10px 15px -5px #2563eb70;
+    }
+
+    .testimonial-text {
+      font-size: 1.35rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #1e293b;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #0f172a;
+    }
+
+    .testimonial-role {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .testimonial-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .testimonial-btn {
+      background: white;
+      border: 1px solid #cbd5e1;
+      width: 48px;
+      height: 48px;
+      border-radius: 60px;
+      font-size: 1.3rem;
+      color: #334155;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .testimonial-btn:hover {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: white;
+    }
+
+    /* ---------- CTA SECTION ---------- */
+    .cta-section {
+      padding: 4.5rem 0;
+      background: white;
+    }
+
+    .cta-card {
+      background: #0f172a;
+      border-radius: 3.5rem;
+      padding: 4rem 2.5rem;
+      color: white;
+      text-align: center;
+    }
+
+    .cta-card h2 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .cta-card p {
+      color: #b9c7da;
+      font-size: 1.2rem;
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn-white {
+      background: white;
+      color: #0f172a;
+      font-weight: 700;
+      padding: 1rem 2.8rem;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      transition: 0.15s;
+      box-shadow: 0 10px 20px -5px #00000040;
+    }
+
+    .btn-white:hover {
+      background: #eef2ff;
+      transform: scale(1.02);
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background: #f1f5f9;
+      padding: 3rem 0;
+      border-top: 1px solid #dae0e8;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .link-group h4 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .link-group ul {
+      list-style: none;
+    }
+
+    .link-group li {
+      margin-bottom: 0.6rem;
+    }
+
+    .link-group a {
+      color: #475569;
+    }
+
+    .link-group a:hover {
+      color: #2563eb;
+    }
+
+    .copyright {
+      margin-top: 3rem;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    /* responsive touches */
+    @media (max-width: 700px) {
+      .navbar { flex-direction: column; gap: 1rem; }
+      .nav-links { gap: 1.8rem; flex-wrap: wrap; justify-content: center; }
+      .hero-content h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">webdevv<span>.</span></div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Work</a>
+        <a href="#">Services</a>
+        <a href="#">Insights</a>
+        <a href="#">Contact</a>
+      </div>
+      <a href="#" class="btn-outline"><i class="fa-regular fa-comment" style="margin-right: 6px;"></i>Let's talk</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="hero-badge"><i class="fa-regular fa-star" style="margin-right: 4px;"></i>trusted partner</span>
+          <h1>code <span class="hero-highlight">· create ·</span> scale</h1>
+          <p>webdevv builds powerful, future-proof software tailored to your business — from MVP to enterprise.</p>
+          <div class="hero-cta">
+            <button class="btn-primary" id="exploreBtn"><i class="fa-regular fa-hand-pointer"></i> Explore services</button>
+            <button class="btn-ghost"><i class="fa-regular fa-calendar"></i> Book a call</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item"><h3>8+</h3><p>years of excellence</p></div>
+            <div class="stat-item"><h3>120+</h3><p>delivered projects</p></div>
+            <div class="stat-item"><h3>24h</h3><p>response time</p></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="code-snip">
+            <span class="keyword">function</span> <span class="func">webdevv</span>() {<br>
+            &nbsp;&nbsp;<span class="keyword">return</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;innovate: <span class="string">'full‑cycle'</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;stack: [<span class="string">'AI'</span>, <span class="string">'cloud'</span>, <span class="string">'web'</span>],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;agile: <span class="keyword">true</span><br>
+            &nbsp;&nbsp;};<br>
+            } <span class="keyword">→</span> 🚀
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES (static) -->
+    <section class="services" id="servicesSection">
+      <div class="container">
+        <h2 class="section-title">crafted software · zero fluff</h2>
+        <p class="section-desc">We offer end‑to‑end development, from discovery to deployment and beyond.</p>
+        <div class="service-cards">
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3>web apps</h3>
+            <p>React, Vue, Node, Python — responsive, performant, and secure web solutions.</p>
+            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+            <h3>mobile & cross‑platform</h3>
+            <p>iOS & Android with Flutter, Kotlin, Swift, or React Native.</p>
+            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
+            <h3>cloud & devops</h3>
+            <p>AWS, Azure, GCP, CI/CD, k8s – scalable infrastructure that just works.</p>
+            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>AI & data</h3>
+            <p>Custom ML models, LLM integration, analytics and intelligent automation.</p>
+            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL CAROUSEL (interactive with JavaScript) -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="section-title" style="text-align: center;">why clients trust webdevv</h2>
+        <div class="testimonial-container" id="testimonialBox">
+          <div class="testimonial-avatar" id="avatar">JD</div>
+          <div class="testimonial-text" id="testimonialText">
+            “webdevv didn’t just write code — they understood our vision and delivered a platform that scaled 3x faster.”
+          </div>
+          <div class="testimonial-author" id="authorName">Jordan Chen</div>
+          <div class="testimonial-role" id="authorRole">CTO, Luminate AI</div>
+          <div class="testimonial-buttons">
+            <button class="testimonial-btn" id="prevTestimonial"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="testimonial-btn" id="nextTestimonial"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <h2>ready to build something great?</h2>
+          <p>Let’s talk about your idea — we’ll help you shape it, build it, and launch it.</p>
+          <button class="btn-white" id="contactBtn"><i class="fa-regular fa-paper-plane" style="margin-right: 8px;"></i>Start a conversation</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-logo">webdevv<span style="color:#2563eb;">.</span></div>
+        <div class="footer-links">
+          <div class="link-group">
+            <h4>company</h4>
+            <ul>
+              <li><a href="#">about</a></li>
+              <li><a href="#">careers</a></li>
+              <li><a href="#">blog</a></li>
+            </ul>
+          </div>
+          <div class="link-group">
+            <h4>services</h4>
+            <ul>
+              <li><a href="#">development</a></li>
+              <li><a href="#">UX/UI design</a></li>
+              <li><a href="#">consulting</a></li>
+            </ul>
+          </div>
+          <div class="link-group">
+            <h4>connect</h4>
+            <ul>
+              <li><a href="#">hello@webdevv.dev</a></li>
+              <li><a href="#">+1 (555) 232‑0210</a></li>
+              <li><i class="fa-brands fa-github"></i> <i class="fa-brands fa-linkedin"></i> <i class="fa-brands fa-x-twitter"></i></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2025 webdevv – software development studio. all wrongs reserved (just kidding, we're open minded).
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for interactive testimonial and button demo -->
+  <script>
+    (function() {
+      // ----- TESTIMONIAL CAROUSEL DATA -----
+      const testimonials = [
+        {
+          avatar: 'JD',
+          text: '“webdevv didn’t just write code — they understood our vision and delivered a platform that scaled 3x faster.”',
+          author: 'Jordan Chen',
+          role: 'CTO, Luminate AI'
+        },
+        {
+          avatar: 'MC',
+          text: '“Incredibly responsive team. They refactored our entire backend with zero downtime. real pros.”',
+          author: 'Maya Crawford',
+          role: 'Product Lead, Finwise'
+        },
+        {
+          avatar: 'TR',
+          text: '“The design and engineering quality blew us away. Our users love the new interface.”',
+          author: 'Taylor Reed',
+          role: 'Founder, Stitch'
+        },
+        {
+          avatar: 'PW',
+          text: '“We needed a reliable partner for a complex IoT dashboard – webdevv overdelivered every sprint.”',
+          author: 'P. Weiss',
+          role: 'Director, NuroCore'
+        }
+      ];
+
+      let currentIndex = 0;
+
+      const avatarEl = document.getElementById('avatar');
+      const textEl = document.getElementById('testimonialText');
+      const authorEl = document.getElementById('authorName');
+      const roleEl = document.getElementById('authorRole');
+      const prevBtn = document.getElementById('prevTestimonial');
+      const nextBtn = document.getElementById('nextTestimonial');
+
+      function updateTestimonial(index) {
+        // wrap around
+        if (index < 0) index = testimonials.length - 1;
+        if (index >= testimonials.length) index = 0;
+        currentIndex = index;
+
+        const t = testimonials[currentIndex];
+        avatarEl.textContent = t.avatar;
+        textEl.textContent = t.text;
+        authorEl.textContent = t.author;
+        roleEl.textContent = t.role;
+      }
+
+      // event listeners
+      if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+          updateTestimonial(currentIndex - 1);
+        });
+        nextBtn.addEventListener('click', () => {
+          updateTestimonial(currentIndex + 1);
+        });
+      }
+
+      // optional: initial update (already shows first one, but ensure)
+      updateTestimonial(0);
+
+      // ----- EXTRA JAVASCRIPT INTERACTIONS (explore & contact) -----
+      const exploreBtn = document.getElementById('exploreBtn');
+      if (exploreBtn) {
+        exploreBtn.addEventListener('click', () => {
+          const servicesSection = document.getElementById('servicesSection');
+          if (servicesSection) {
+            servicesSection.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            alert('⚡ check out our services above! (smooth scroll)');
+          }
+        });
+      }
+
+      const contactBtn = document.getElementById('contactBtn');
+      if (contactBtn) {
+        contactBtn.addEventListener('click', () => {
+          alert('📬 Thanks for reaching out! A webdevv engineer will reply within 24h. (demo)');
+        });
+      }
+
+      // small hover / console fun (optional)
+      console.log('🚀 webdevv — software, evolved.');
+    })();
+  </script>
+  <!-- subtle extra style for avatar letter (uppercase) -->
+  <style>
+    .testimonial-avatar { text-transform: uppercase; }
+  </style>
+</body>
+</html>
