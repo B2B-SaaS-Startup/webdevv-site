@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,9 +63,12 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 50;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 1000;
       border-bottom: 1px solid rgba(226, 232, 240, 0.6);
     }
 
@@ -77,7 +81,8 @@
     }
 
     .logo span {
-      color: #2563eb;     /* accent dot / style */
+      color: #2563eb;
+      /* accent dot / style */
     }
 
     .nav-links {
@@ -129,6 +134,11 @@
     }
 
     /* ---------- HERO ---------- */
+    main {
+      padding-top: 80px;
+      /* Offset for fixed navbar */
+    }
+
     .hero {
       padding: 5rem 0 4rem 0;
       background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
@@ -256,7 +266,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 40px 50px -20px rgba(0,70,150,0.2);
+      box-shadow: 0 40px 50px -20px rgba(0, 70, 150, 0.2);
       border: 1px solid #ffffff50;
     }
 
@@ -271,9 +281,17 @@
       box-shadow: 0 25px 30px -12px #0f172a40;
     }
 
-    .code-snip span.keyword { color: #f472b6; }
-    .code-snip span.func { color: #fbbf24; }
-    .code-snip span.string { color: #bef264; }
+    .code-snip span.keyword {
+      color: #f472b6;
+    }
+
+    .code-snip span.func {
+      color: #fbbf24;
+    }
+
+    .code-snip span.string {
+      color: #bef264;
+    }
 
     /* ---------- SERVICES ---------- */
     .services {
@@ -292,7 +310,7 @@
       background: white;
       border-radius: 2rem;
       padding: 2rem 1.8rem;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
       border: 1px solid #eef2f6;
       transition: all 0.2s ease;
     }
@@ -361,7 +379,7 @@
       background: white;
       border-radius: 3rem;
       padding: 2.5rem 3rem;
-      box-shadow: 0 20px 35px -8px rgba(0,0,0,0.05);
+      box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.05);
       border: 1px solid #e9edf2;
       text-align: center;
       position: relative;
@@ -529,12 +547,24 @@
 
     /* responsive touches */
     @media (max-width: 700px) {
-      .navbar { flex-direction: column; gap: 1rem; }
-      .nav-links { gap: 1.8rem; flex-wrap: wrap; justify-content: center; }
-      .hero-content h1 { font-size: 2.5rem; }
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
     <nav class="navbar">
@@ -559,13 +589,23 @@
           <h1>code <span class="hero-highlight">· create ·</span> scale</h1>
           <p>webdevv builds powerful, future-proof software tailored to your business — from MVP to enterprise.</p>
           <div class="hero-cta">
-            <button class="btn-primary" id="exploreBtn"><i class="fa-regular fa-hand-pointer"></i> Explore services</button>
+            <button class="btn-primary" id="exploreBtn"><i class="fa-regular fa-hand-pointer"></i> Explore
+              services</button>
             <button class="btn-ghost"><i class="fa-regular fa-calendar"></i> Book a call</button>
           </div>
           <div class="hero-stats">
-            <div class="stat-item"><h3>8+</h3><p>years of excellence</p></div>
-            <div class="stat-item"><h3>120+</h3><p>delivered projects</p></div>
-            <div class="stat-item"><h3>24h</h3><p>response time</p></div>
+            <div class="stat-item">
+              <h3>8+</h3>
+              <p>years of excellence</p>
+            </div>
+            <div class="stat-item">
+              <h3>120+</h3>
+              <p>delivered projects</p>
+            </div>
+            <div class="stat-item">
+              <h3>24h</h3>
+              <p>response time</p>
+            </div>
           </div>
         </div>
         <div class="hero-visual">
@@ -573,7 +613,8 @@
             <span class="keyword">function</span> <span class="func">webdevv</span>() {<br>
             &nbsp;&nbsp;<span class="keyword">return</span> {<br>
             &nbsp;&nbsp;&nbsp;&nbsp;innovate: <span class="string">'full‑cycle'</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;stack: [<span class="string">'AI'</span>, <span class="string">'cloud'</span>, <span class="string">'web'</span>],<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;stack: [<span class="string">'AI'</span>, <span class="string">'cloud'</span>, <span
+              class="string">'web'</span>],<br>
             &nbsp;&nbsp;&nbsp;&nbsp;agile: <span class="keyword">true</span><br>
             &nbsp;&nbsp;};<br>
             } <span class="keyword">→</span> 🚀
@@ -623,7 +664,8 @@
         <div class="testimonial-container" id="testimonialBox">
           <div class="testimonial-avatar" id="avatar">JD</div>
           <div class="testimonial-text" id="testimonialText">
-            “webdevv didn’t just write code — they understood our vision and delivered a platform that scaled 3x faster.”
+            “webdevv didn’t just write code — they understood our vision and delivered a platform that scaled 3x
+            faster.”
           </div>
           <div class="testimonial-author" id="authorName">Jordan Chen</div>
           <div class="testimonial-role" id="authorRole">CTO, Luminate AI</div>
@@ -641,7 +683,8 @@
         <div class="cta-card">
           <h2>ready to build something great?</h2>
           <p>Let’s talk about your idea — we’ll help you shape it, build it, and launch it.</p>
-          <button class="btn-white" id="contactBtn"><i class="fa-regular fa-paper-plane" style="margin-right: 8px;"></i>Start a conversation</button>
+          <button class="btn-white" id="contactBtn"><i class="fa-regular fa-paper-plane"
+              style="margin-right: 8px;"></i>Start a conversation</button>
         </div>
       </div>
     </section>
@@ -673,7 +716,8 @@
             <ul>
               <li><a href="#">hello@webdevv.dev</a></li>
               <li><a href="#">+1 (555) 232‑0210</a></li>
-              <li><i class="fa-brands fa-github"></i> <i class="fa-brands fa-linkedin"></i> <i class="fa-brands fa-x-twitter"></i></li>
+              <li><i class="fa-brands fa-github"></i> <i class="fa-brands fa-linkedin"></i> <i
+                  class="fa-brands fa-x-twitter"></i></li>
             </ul>
           </div>
         </div>
@@ -686,7 +730,7 @@
 
   <!-- JavaScript for interactive testimonial and button demo -->
   <script>
-    (function() {
+    (function () {
       // ----- TESTIMONIAL CAROUSEL DATA -----
       const testimonials = [
         {
@@ -776,7 +820,10 @@
   </script>
   <!-- subtle extra style for avatar letter (uppercase) -->
   <style>
-    .testimonial-avatar { text-transform: uppercase; }
+    .testimonial-avatar {
+      text-transform: uppercase;
+    }
   </style>
 </body>
+
 </html>
