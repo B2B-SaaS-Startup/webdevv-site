@@ -112,8 +112,13 @@
       width: 100%;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: #0f172a;
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
     }
 
     .btn-outline {
@@ -570,11 +575,11 @@
     <nav class="navbar">
       <div class="logo">webdevv<span>.</span></div>
       <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Work</a>
-        <a href="#">Services</a>
-        <a href="#">Insights</a>
-        <a href="#">Contact</a>
+        <a href="#home">Home</a>
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#insights">Insights</a>
+        <a href="#contact">Contact</a>
       </div>
       <a href="#" class="btn-outline"><i class="fa-regular fa-comment" style="margin-right: 6px;"></i>Let's talk</a>
     </nav>
@@ -582,7 +587,7 @@
 
   <main>
     <!-- HERO SECTION -->
-    <section class="hero">
+    <section class="hero" id="home">
       <div class="container hero-grid">
         <div class="hero-content">
           <span class="hero-badge"><i class="fa-regular fa-star" style="margin-right: 4px;"></i>trusted partner</span>
@@ -593,7 +598,7 @@
               services</button>
             <button class="btn-ghost"><i class="fa-regular fa-calendar"></i> Book a call</button>
           </div>
-          <div class="hero-stats">
+          <div class="hero-stats" id="work">
             <div class="stat-item">
               <h3>8+</h3>
               <p>years of excellence</p>
@@ -624,7 +629,7 @@
     </section>
 
     <!-- SERVICES (static) -->
-    <section class="services" id="servicesSection">
+    <section class="services" id="services">
       <div class="container">
         <h2 class="section-title">crafted software · zero fluff</h2>
         <p class="section-desc">We offer end‑to‑end development, from discovery to deployment and beyond.</p>
@@ -658,7 +663,7 @@
     </section>
 
     <!-- TESTIMONIAL CAROUSEL (interactive with JavaScript) -->
-    <section class="testimonials">
+    <section class="testimonials" id="insights">
       <div class="container">
         <h2 class="section-title" style="text-align: center;">why clients trust webdevv</h2>
         <div class="testimonial-container" id="testimonialBox">
@@ -678,7 +683,7 @@
     </section>
 
     <!-- CALL TO ACTION -->
-    <section class="cta-section">
+    <section class="cta-section" id="contact">
       <div class="container">
         <div class="cta-card">
           <h2>ready to build something great?</h2>
@@ -816,6 +821,33 @@
 
       // small hover / console fun (optional)
       console.log('🚀 webdevv — software, evolved.');
+
+      // ----- SCROLLSPY LOGIC -----
+      const sections = document.querySelectorAll('section[id], div[id="work"]');
+      const navLinks = document.querySelectorAll('.nav-links a');
+
+      function changeActiveNav() {
+        let current = '';
+        const offset = 100; // vertical offset for triggers
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= (sectionTop - offset)) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href').includes(current)) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', changeActiveNav);
+      changeActiveNav(); // run on load
     })();
   </script>
   <!-- subtle extra style for avatar letter (uppercase) -->
