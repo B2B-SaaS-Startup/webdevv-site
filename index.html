@@ -243,6 +243,163 @@
       background: #f8fafc;
     }
 
+    .btn-apps {
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      background: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-apps:hover {
+      background: #e2e8f0;
+      transform: translateY(-1px);
+    }
+
+    /* ---------- APPS MODAL ---------- */
+    .apps-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .apps-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .apps-modal {
+      background: white;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 2.5rem;
+      padding: 2.5rem;
+      box-shadow: 0 40px 60px -15px rgba(0, 0, 0, 0.2);
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    .apps-overlay.active .apps-modal {
+      transform: scale(1);
+    }
+
+    .apps-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .apps-modal-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .close-apps {
+      background: #f1f5f9;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #64748b;
+      transition: 0.2s;
+    }
+
+    .close-apps:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .app-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem;
+      border-radius: 1.5rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .app-item:hover {
+      background: #f8fafc;
+      transform: translateY(-4px);
+    }
+
+    .app-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+    }
+
+    .app-item span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    /* App Specific Colors */
+    .app-analytics {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+    }
+
+    .app-chat {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+    }
+
+    .app-cloud {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: white;
+    }
+
+    .app-tasks {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: white;
+    }
+
+    .app-wallet {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: white;
+    }
+
     .hero-stats {
       display: flex;
       gap: 2rem;
@@ -580,6 +737,7 @@
         <a href="#services">Services</a>
         <a href="#insights">Insights</a>
         <a href="#contact">Contact</a>
+        <button class="btn-apps" id="appsBtn"><i class="fa-solid fa-table-cells"></i> Apps</button>
       </div>
       <a href="#" class="btn-outline"><i class="fa-regular fa-comment" style="margin-right: 6px;"></i>Let's talk</a>
     </nav>
@@ -848,8 +1006,63 @@
 
       window.addEventListener('scroll', changeActiveNav);
       changeActiveNav(); // run on load
+
+      // ----- APPS MODAL LOGIC -----
+      const appsBtn = document.getElementById('appsBtn');
+      const appsOverlay = document.getElementById('appsOverlay');
+      const closeApps = document.getElementById('closeApps');
+
+      function toggleApps(show) {
+        if (show) {
+          appsOverlay.style.display = 'flex';
+          setTimeout(() => appsOverlay.classList.add('active'), 10);
+        } else {
+          appsOverlay.classList.remove('active');
+          setTimeout(() => appsOverlay.style.display = 'none', 300);
+        }
+      }
+
+      if (appsBtn) appsBtn.addEventListener('click', () => toggleApps(true));
+      if (closeApps) closeApps.addEventListener('click', () => toggleApps(false));
+      if (appsOverlay) {
+        appsOverlay.addEventListener('click', (e) => {
+          if (e.target === appsOverlay) toggleApps(false);
+        });
+      }
     })();
   </script>
+
+  <!-- APPS MODAL STRUCTURE -->
+  <div class="apps-overlay" id="appsOverlay">
+    <div class="apps-modal">
+      <div class="apps-modal-header">
+        <h2>WebDevv Apps</h2>
+        <button class="close-apps" id="closeApps"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="apps-grid">
+        <div class="app-item">
+          <div class="app-icon-wrap app-analytics"><i class="fa-solid fa-chart-line"></i></div>
+          <span>Analytics</span>
+        </div>
+        <div class="app-item">
+          <div class="app-icon-wrap app-chat"><i class="fa-solid fa-comments"></i></div>
+          <span>Chat</span>
+        </div>
+        <div class="app-item">
+          <div class="app-icon-wrap app-cloud"><i class="fa-solid fa-cloud"></i></div>
+          <span>Cloud</span>
+        </div>
+        <div class="app-item">
+          <div class="app-icon-wrap app-tasks"><i class="fa-solid fa-list-check"></i></div>
+          <span>Tasks</span>
+        </div>
+        <div class="app-item">
+          <div class="app-icon-wrap app-wallet"><i class="fa-solid fa-wallet"></i></div>
+          <span>Wallet</span>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- subtle extra style for avatar letter (uppercase) -->
   <style>
     .testimonial-avatar {
