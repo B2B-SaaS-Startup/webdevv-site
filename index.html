@@ -371,133 +371,111 @@
       transform: translateX(4px);
     }
 
-    /* ---------- INSIGHTS ---------- */
-    .insights {
+    /* ---------- APPS ---------- */
+    .apps {
       padding: 5rem 0;
       background: #f8fafc;
       border-top: 1px solid #e2e8f0;
       border-bottom: 1px solid #e2e8f0;
     }
 
-    .insights-header {
+    .apps-header {
       text-align: center;
       margin-bottom: 3.5rem;
     }
 
-    .insights-grid {
+    .apps-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
 
-    .insight-card {
-      background: white;
+    .app-card {
+      background: #ffffff;
       border-radius: 1.5rem;
-      overflow: hidden;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
-      border: 1px solid #eef2f6;
-      transition: all 0.3s ease;
+      padding: 2rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.03);
+      transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
     }
 
-    .insight-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 35px -10px rgba(37, 99, 235, 0.1);
+    .app-card:hover {
+      box-shadow: 0 20px 25px -10px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
       border-color: #cbd5e1;
     }
 
-    .insight-img {
-      height: 200px;
-      background: #e2e8f0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .insight-img::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 100%);
-    }
-
-    .insight-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .insight-card:hover .insight-img img {
-      transform: scale(1.05);
-    }
-
-    .insight-category {
-      position: absolute;
-      bottom: 1rem;
-      left: 1.5rem;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(4px);
-      color: #0f172a;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      z-index: 10;
-    }
-
-    .insight-content {
-      padding: 2rem 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .insight-meta {
-      font-size: 0.85rem;
-      color: #64748b;
-      margin-bottom: 0.8rem;
+    .app-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 1.2rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: white;
+      box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.1);
     }
 
-    .insight-title {
+    .app-title {
       font-size: 1.3rem;
       font-weight: 700;
       color: #0f172a;
-      margin-bottom: 1rem;
-      line-height: 1.4;
+      margin-bottom: 0.6rem;
     }
 
-    .insight-desc {
+    .app-desc {
       color: #475569;
       font-size: 0.95rem;
       margin-bottom: 1.5rem;
       flex: 1;
     }
 
-    .insight-link {
-      color: #2563eb;
+    .app-link {
+      color: #0f172a;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      background: #f1f5f9;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      transition: 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      margin-top: auto;
     }
 
-    .insight-link i {
-      transition: transform 0.2s;
+    .app-link:hover {
+      background: #e2e8f0;
     }
 
-    .insight-link:hover i {
-      transform: translateX(4px);
+    /* specific app colors */
+    .bg-blue {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+    }
+
+    .bg-green {
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+
+    .bg-purple {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    }
+
+    .bg-orange {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+    }
+
+    .bg-pink {
+      background: linear-gradient(135deg, #ec4899, #db2777);
+    }
+
+    .bg-teal {
+      background: linear-gradient(135deg, #14b8a6, #0d9488);
     }
 
     /* ---------- CTA SECTION ---------- */
@@ -628,7 +606,7 @@
         <a href="#home">Home</a>
         <a href="#work">Work</a>
         <a href="#services">Services</a>
-        <a href="#insights">Insights</a>
+        <a href="#apps">Apps</a>
         <a href="#contact">Contact</a>
       </div>
       <a href="#" class="btn-outline"><i class="fa-regular fa-comment" style="margin-right: 6px;"></i>Let's talk</a>
@@ -712,74 +690,84 @@
       </div>
     </section>
 
-    <!-- INSIGHTS & CASE STUDIES -->
-    <section class="insights" id="insights">
+    <!-- APPS & PRODUCTS -->
+    <section class="apps" id="apps">
       <div class="container">
-        <div class="insights-header">
-          <h2 class="section-title">latest insights & studies</h2>
-          <p class="section-desc" style="margin: 0 auto;">Discover how we engineer solutions, scale architectures, and
-            think about the future of software.</p>
+        <div class="apps-header">
+          <h2 class="section-title">discover our apps</h2>
+          <p class="section-desc" style="margin: 0 auto;">A suite of interconnected tools engineered to accelerate your
+            workflow.</p>
         </div>
 
-        <div class="insights-grid">
-          <!-- Article 1 -->
-          <div class="insight-card">
-            <div class="insight-img">
-              <span class="insight-category">Engineering</span>
-              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800"
-                alt="Code on screen">
+        <div class="apps-grid">
+          <!-- App 1 -->
+          <div class="app-card">
+            <div class="app-icon bg-blue">
+              <i class="fa-solid fa-chart-pie"></i>
             </div>
-            <div class="insight-content">
-              <div class="insight-meta">
-                <span><i class="fa-regular fa-calendar"></i> Oct 12, 2025</span>
-                <span>•</span>
-                <span>5 min read</span>
-              </div>
-              <h3 class="insight-title">Zero-Downtime Migration to Kubernetes</h3>
-              <p class="insight-desc">How we seamlessly migrated a legacy monolith processing 2M+ daily requests to a
-                modern k8s cluster.</p>
-              <a href="#" class="insight-link">Read Case Study <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+            <h3 class="app-title">Webdevv Analytics</h3>
+            <p class="app-desc">Real-time usage insights, conversion tracking, and predictive cohort analysis all in one
+              place.</p>
+            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
+                style="margin-left:4px;"></i></a>
           </div>
 
-          <!-- Article 2 -->
-          <div class="insight-card">
-            <div class="insight-img">
-              <span class="insight-category">AI & Data</span>
-              <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800"
-                alt="Abstract AI visual">
+          <!-- App 2 -->
+          <div class="app-card">
+            <div class="app-icon bg-purple">
+              <i class="fa-solid fa-robot"></i>
             </div>
-            <div class="insight-content">
-              <div class="insight-meta">
-                <span><i class="fa-regular fa-calendar"></i> Sep 28, 2025</span>
-                <span>•</span>
-                <span>7 min read</span>
-              </div>
-              <h3 class="insight-title">Integrating LLMs into B2B SaaS</h3>
-              <p class="insight-desc">A deep dive into prompt architecture, RAG patterns, and cost-optimization for
-                enterprise AI features.</p>
-              <a href="#" class="insight-link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+            <h3 class="app-title">Automate AI</h3>
+            <p class="app-desc">Train AI models on your own documents. Deploy custom conversational agents within
+              minutes.</p>
+            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
+                style="margin-left:4px;"></i></a>
           </div>
 
-          <!-- Article 3 -->
-          <div class="insight-card">
-            <div class="insight-img">
-              <span class="insight-category">Design</span>
-              <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800"
-                alt="UX workspace">
+          <!-- App 3 -->
+          <div class="app-card">
+            <div class="app-icon bg-green">
+              <i class="fa-solid fa-shield-halved"></i>
             </div>
-            <div class="insight-content">
-              <div class="insight-meta">
-                <span><i class="fa-regular fa-calendar"></i> Sep 14, 2025</span>
-                <span>•</span>
-                <span>4 min read</span>
-              </div>
-              <h3 class="insight-title">The ROI of Micro-Interactions</h3>
-              <p class="insight-desc">Why spending extra time on frontend details and animations drastically improves
-                user retention.</p>
-              <a href="#" class="insight-link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+            <h3 class="app-title">Vault Sec</h3>
+            <p class="app-desc">Centralize your API keys, credentials, and environment variables with military-grade
+              encryption.</p>
+            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
+                style="margin-left:4px;"></i></a>
+          </div>
+
+          <!-- App 4 -->
+          <div class="app-card">
+            <div class="app-icon bg-orange">
+              <i class="fa-solid fa-bolt"></i>
             </div>
+            <h3 class="app-title">Site Forge</h3>
+            <p class="app-desc">A visual site builder that output clean React and Tailwind code under the hood.</p>
+            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
+                style="margin-left:4px;"></i></a>
+          </div>
+
+          <!-- App 5 -->
+          <div class="app-card">
+            <div class="app-icon bg-pink">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <h3 class="app-title">Cloud Deploy</h3>
+            <p class="app-desc">Push your code to production securely without needing to touch a server or configure
+              k8s.</p>
+            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
+                style="margin-left:4px;"></i></a>
+          </div>
+
+          <!-- App 6 -->
+          <div class="app-card">
+            <div class="app-icon bg-teal">
+              <i class="fa-solid fa-envelope-open-text"></i>
+            </div>
+            <h3 class="app-title">Mail Flow</h3>
+            <p class="app-desc">Design, automate, and track transactional emails and mass marketing campaigns.</p>
+            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
+                style="margin-left:4px;"></i></a>
           </div>
         </div>
       </div>
