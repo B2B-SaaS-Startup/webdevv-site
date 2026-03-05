@@ -371,84 +371,133 @@
       transform: translateX(4px);
     }
 
-    /* ---------- TESTIMONIAL (JavaScript interactive) ---------- */
-    .testimonials {
-      padding: 4rem 0;
+    /* ---------- INSIGHTS ---------- */
+    .insights {
+      padding: 5rem 0;
       background: #f8fafc;
       border-top: 1px solid #e2e8f0;
       border-bottom: 1px solid #e2e8f0;
     }
 
-    .testimonial-container {
-      max-width: 800px;
-      margin: 2rem auto 0;
-      background: white;
-      border-radius: 3rem;
-      padding: 2.5rem 3rem;
-      box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e9edf2;
+    .insights-header {
       text-align: center;
-      position: relative;
+      margin-bottom: 3.5rem;
     }
 
-    .testimonial-avatar {
-      width: 80px;
-      height: 80px;
-      background: #2563eb;
-      border-radius: 50%;
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .insight-card {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+      border: 1px solid #eef2f6;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .insight-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -10px rgba(37, 99, 235, 0.1);
+      border-color: #cbd5e1;
+    }
+
+    .insight-img {
+      height: 200px;
+      background: #e2e8f0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .insight-img::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 100%);
+    }
+
+    .insight-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .insight-card:hover .insight-img img {
+      transform: scale(1.05);
+    }
+
+    .insight-category {
+      position: absolute;
+      bottom: 1rem;
+      left: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(4px);
+      color: #0f172a;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 10;
+    }
+
+    .insight-content {
+      padding: 2rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .insight-meta {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 0.8rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.2rem;
-      color: white;
-      font-size: 2.5rem;
-      font-weight: 600;
-      box-shadow: 0 10px 15px -5px #2563eb70;
+      gap: 0.5rem;
     }
 
-    .testimonial-text {
-      font-size: 1.35rem;
-      font-weight: 400;
-      line-height: 1.6;
-      color: #1e293b;
-      margin-bottom: 1.5rem;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: #0f172a;
-    }
-
-    .testimonial-role {
-      color: #64748b;
-      font-size: 0.95rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .testimonial-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .testimonial-btn {
-      background: white;
-      border: 1px solid #cbd5e1;
-      width: 48px;
-      height: 48px;
-      border-radius: 60px;
+    .insight-title {
       font-size: 1.3rem;
-      color: #334155;
-      cursor: pointer;
-      transition: 0.15s;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 1rem;
+      line-height: 1.4;
     }
 
-    .testimonial-btn:hover {
-      background: #2563eb;
-      border-color: #2563eb;
-      color: white;
+    .insight-desc {
+      color: #475569;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .insight-link {
+      color: #2563eb;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: auto;
+    }
+
+    .insight-link i {
+      transition: transform 0.2s;
+    }
+
+    .insight-link:hover i {
+      transform: translateX(4px);
     }
 
     /* ---------- CTA SECTION ---------- */
@@ -663,21 +712,74 @@
       </div>
     </section>
 
-    <!-- TESTIMONIAL CAROUSEL (interactive with JavaScript) -->
-    <section class="testimonials" id="insights">
+    <!-- INSIGHTS & CASE STUDIES -->
+    <section class="insights" id="insights">
       <div class="container">
-        <h2 class="section-title" style="text-align: center;">why clients trust webdevv</h2>
-        <div class="testimonial-container" id="testimonialBox">
-          <div class="testimonial-avatar" id="avatar">JD</div>
-          <div class="testimonial-text" id="testimonialText">
-            “webdevv didn’t just write code — they understood our vision and delivered a platform that scaled 3x
-            faster.”
+        <div class="insights-header">
+          <h2 class="section-title">latest insights & studies</h2>
+          <p class="section-desc" style="margin: 0 auto;">Discover how we engineer solutions, scale architectures, and
+            think about the future of software.</p>
+        </div>
+
+        <div class="insights-grid">
+          <!-- Article 1 -->
+          <div class="insight-card">
+            <div class="insight-img">
+              <span class="insight-category">Engineering</span>
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800"
+                alt="Code on screen">
+            </div>
+            <div class="insight-content">
+              <div class="insight-meta">
+                <span><i class="fa-regular fa-calendar"></i> Oct 12, 2025</span>
+                <span>•</span>
+                <span>5 min read</span>
+              </div>
+              <h3 class="insight-title">Zero-Downtime Migration to Kubernetes</h3>
+              <p class="insight-desc">How we seamlessly migrated a legacy monolith processing 2M+ daily requests to a
+                modern k8s cluster.</p>
+              <a href="#" class="insight-link">Read Case Study <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
           </div>
-          <div class="testimonial-author" id="authorName">Jordan Chen</div>
-          <div class="testimonial-role" id="authorRole">CTO, Luminate AI</div>
-          <div class="testimonial-buttons">
-            <button class="testimonial-btn" id="prevTestimonial"><i class="fa-solid fa-chevron-left"></i></button>
-            <button class="testimonial-btn" id="nextTestimonial"><i class="fa-solid fa-chevron-right"></i></button>
+
+          <!-- Article 2 -->
+          <div class="insight-card">
+            <div class="insight-img">
+              <span class="insight-category">AI & Data</span>
+              <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800"
+                alt="Abstract AI visual">
+            </div>
+            <div class="insight-content">
+              <div class="insight-meta">
+                <span><i class="fa-regular fa-calendar"></i> Sep 28, 2025</span>
+                <span>•</span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="insight-title">Integrating LLMs into B2B SaaS</h3>
+              <p class="insight-desc">A deep dive into prompt architecture, RAG patterns, and cost-optimization for
+                enterprise AI features.</p>
+              <a href="#" class="insight-link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Article 3 -->
+          <div class="insight-card">
+            <div class="insight-img">
+              <span class="insight-category">Design</span>
+              <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800"
+                alt="UX workspace">
+            </div>
+            <div class="insight-content">
+              <div class="insight-meta">
+                <span><i class="fa-regular fa-calendar"></i> Sep 14, 2025</span>
+                <span>•</span>
+                <span>4 min read</span>
+              </div>
+              <h3 class="insight-title">The ROI of Micro-Interactions</h3>
+              <p class="insight-desc">Why spending extra time on frontend details and animations drastically improves
+                user retention.</p>
+              <a href="#" class="insight-link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
           </div>
         </div>
       </div>
@@ -737,69 +839,6 @@
   <!-- JavaScript for interactive testimonial and button demo -->
   <script>
     (function () {
-      // ----- TESTIMONIAL CAROUSEL DATA -----
-      const testimonials = [
-        {
-          avatar: 'JD',
-          text: '“webdevv didn’t just write code — they understood our vision and delivered a platform that scaled 3x faster.”',
-          author: 'Jordan Chen',
-          role: 'CTO, Luminate AI'
-        },
-        {
-          avatar: 'MC',
-          text: '“Incredibly responsive team. They refactored our entire backend with zero downtime. real pros.”',
-          author: 'Maya Crawford',
-          role: 'Product Lead, Finwise'
-        },
-        {
-          avatar: 'TR',
-          text: '“The design and engineering quality blew us away. Our users love the new interface.”',
-          author: 'Taylor Reed',
-          role: 'Founder, Stitch'
-        },
-        {
-          avatar: 'PW',
-          text: '“We needed a reliable partner for a complex IoT dashboard – webdevv overdelivered every sprint.”',
-          author: 'P. Weiss',
-          role: 'Director, NuroCore'
-        }
-      ];
-
-      let currentIndex = 0;
-
-      const avatarEl = document.getElementById('avatar');
-      const textEl = document.getElementById('testimonialText');
-      const authorEl = document.getElementById('authorName');
-      const roleEl = document.getElementById('authorRole');
-      const prevBtn = document.getElementById('prevTestimonial');
-      const nextBtn = document.getElementById('nextTestimonial');
-
-      function updateTestimonial(index) {
-        // wrap around
-        if (index < 0) index = testimonials.length - 1;
-        if (index >= testimonials.length) index = 0;
-        currentIndex = index;
-
-        const t = testimonials[currentIndex];
-        avatarEl.textContent = t.avatar;
-        textEl.textContent = t.text;
-        authorEl.textContent = t.author;
-        roleEl.textContent = t.role;
-      }
-
-      // event listeners
-      if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', () => {
-          updateTestimonial(currentIndex - 1);
-        });
-        nextBtn.addEventListener('click', () => {
-          updateTestimonial(currentIndex + 1);
-        });
-      }
-
-      // optional: initial update (already shows first one, but ensure)
-      updateTestimonial(0);
-
       // ----- EXTRA JAVASCRIPT INTERACTIONS (explore & contact) -----
       const exploreBtn = document.getElementById('exploreBtn');
       if (exploreBtn) {
@@ -853,12 +892,6 @@
     })();
   </script>
 
-  <!-- subtle extra style for avatar letter (uppercase) -->
-  <style>
-    .testimonial-avatar {
-      text-transform: uppercase;
-    }
-  </style>
 </body>
 
 </html>
