@@ -605,8 +605,8 @@
       <div class="nav-links">
         <a href="#home">Home</a>
         <a href="#work">Work</a>
-        <a href="#services">Services</a>
         <a href="#apps">Apps</a>
+        <a href="#services">Services</a>
         <a href="#contact">Contact</a>
       </div>
       <a href="#" class="btn-outline"><i class="fa-regular fa-comment" style="margin-right: 6px;"></i>Let's talk</a>
@@ -651,40 +651,6 @@
             &nbsp;&nbsp;&nbsp;&nbsp;agile: <span class="keyword">true</span><br>
             &nbsp;&nbsp;};<br>
             } <span class="keyword">→</span> 🚀
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES (static) -->
-    <section class="services" id="services">
-      <div class="container">
-        <h2 class="section-title">crafted software · zero fluff</h2>
-        <p class="section-desc">We offer end‑to‑end development, from discovery to deployment and beyond.</p>
-        <div class="service-cards">
-          <div class="card">
-            <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
-            <h3>web apps</h3>
-            <p>React, Vue, Node, Python — responsive, performant, and secure web solutions.</p>
-            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-          <div class="card">
-            <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-            <h3>mobile & cross‑platform</h3>
-            <p>iOS & Android with Flutter, Kotlin, Swift, or React Native.</p>
-            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-          <div class="card">
-            <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
-            <h3>cloud & devops</h3>
-            <p>AWS, Azure, GCP, CI/CD, k8s – scalable infrastructure that just works.</p>
-            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-          <div class="card">
-            <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
-            <h3>AI & data</h3>
-            <p>Custom ML models, LLM integration, analytics and intelligent automation.</p>
-            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -773,6 +739,40 @@
       </div>
     </section>
 
+    <!-- SERVICES (static) -->
+    <section class="services" id="services">
+      <div class="container">
+        <h2 class="section-title">crafted software · zero fluff</h2>
+        <p class="section-desc">We offer end‑to‑end development, from discovery to deployment and beyond.</p>
+        <div class="service-cards">
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3>web apps</h3>
+            <p>React, Vue, Node, Python — responsive, performant, and secure web solutions.</p>
+            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+            <h3>mobile & cross‑platform</h3>
+            <p>iOS & Android with Flutter, Kotlin, Swift, or React Native.</p>
+            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
+            <h3>cloud & devops</h3>
+            <p>AWS, Azure, GCP, CI/CD, k8s – scalable infrastructure that just works.</p>
+            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>AI & data</h3>
+            <p>Custom ML models, LLM integration, analytics and intelligent automation.</p>
+            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CALL TO ACTION -->
     <section class="cta-section" id="contact">
       <div class="container">
@@ -831,11 +831,11 @@
       const exploreBtn = document.getElementById('exploreBtn');
       if (exploreBtn) {
         exploreBtn.addEventListener('click', () => {
-          const servicesSection = document.getElementById('servicesSection');
+          const servicesSection = document.getElementById('services');
           if (servicesSection) {
             servicesSection.scrollIntoView({ behavior: 'smooth' });
           } else {
-            alert('⚡ check out our services above! (smooth scroll)');
+            alert('⚡ check out our services! (smooth scroll)');
           }
         });
       }
