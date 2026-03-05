@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=1200, initial-scale=1.0">
   <title>webdevv · software company</title>
   <!-- Font Awesome 6 (free) for crisp icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -154,7 +154,6 @@
       display: flex;
       align-items: center;
       gap: 3rem;
-      flex-wrap: wrap;
     }
 
     .hero-content {
@@ -245,22 +244,50 @@
 
 
     .hero-stats {
-      display: flex;
-      gap: 2rem;
-      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 2.5rem;
+    }
+
+    @media (min-width: 600px) {
+      .hero-stats {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .stat-item {
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      background: white;
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+      transform: translateY(-2px);
+      border-color: #cbd5e1;
     }
 
     .stat-item h3 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #0f172a;
-      line-height: 1.2;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #2563eb;
+      line-height: 1;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.05em;
     }
 
     .stat-item p {
-      font-size: 0.95rem;
+      font-size: 1.15rem;
       color: #64748b;
+      font-weight: 500;
       margin: 0;
+      line-height: 1.4;
     }
 
     .hero-visual {
@@ -306,8 +333,7 @@
     }
 
     .service-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      display: flex;
       gap: 2rem;
       margin-top: 1.5rem;
     }
@@ -534,7 +560,6 @@
     .footer-grid {
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
       gap: 2rem;
     }
 
@@ -547,7 +572,6 @@
     .footer-links {
       display: flex;
       gap: 4rem;
-      flex-wrap: wrap;
     }
 
     .link-group h4 {
@@ -577,24 +601,6 @@
       color: #64748b;
       font-size: 0.9rem;
     }
-
-    /* responsive touches */
-    @media (max-width: 700px) {
-      .navbar {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .nav-links {
-        gap: 1.8rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-    }
   </style>
 </head>
 
@@ -604,7 +610,6 @@
       <div class="logo">webdevv<span>.</span></div>
       <div class="nav-links">
         <a href="#home">Home</a>
-        <a href="#work">Work</a>
         <a href="#apps">Apps</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
@@ -628,16 +633,20 @@
           </div>
           <div class="hero-stats" id="work">
             <div class="stat-item">
-              <h3>8+</h3>
-              <p>years of excellence</p>
+              <h3>2.5x</h3>
+              <p>avg. revenue<br>growth for clients</p>
             </div>
             <div class="stat-item">
-              <h3>120+</h3>
-              <p>delivered projects</p>
+              <h3>$1B+</h3>
+              <p>processed through<br>our secure APIs</p>
             </div>
             <div class="stat-item">
-              <h3>24h</h3>
-              <p>response time</p>
+              <h3>99.9%</h3>
+              <p>guaranteed<br>uptime SLA</p>
+            </div>
+            <div class="stat-item">
+              <h3>150+</h3>
+              <p>successful cloud<br>deployments</p>
             </div>
           </div>
         </div>
