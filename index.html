@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1200, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>webdevv · software company</title>
   <!-- Font Awesome 6 (free) for crisp icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -595,6 +595,193 @@
       color: #64748b;
       font-size: 0.9rem;
     }
+
+    /* ---------- HAMBURGER BUTTON ---------- */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.4rem 0.6rem;
+      border-radius: 10px;
+      color: #0f172a;
+      font-size: 1.4rem;
+      transition: background 0.2s;
+      line-height: 1;
+    }
+
+    .hamburger:hover {
+      background: #f1f5f9;
+    }
+
+    /* ---------- DRAWER ---------- */
+    .drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.4);
+      z-index: 1100;
+      backdrop-filter: blur(2px);
+    }
+
+    .drawer-overlay.open {
+      display: block;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 280px;
+      height: 100%;
+      background: white;
+      z-index: 1200;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.5rem;
+      gap: 0.5rem;
+      transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .drawer.open {
+      right: 0;
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .drawer-logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+    }
+
+    .drawer-logo span {
+      color: #2563eb;
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: #64748b;
+      cursor: pointer;
+      padding: 0.3rem;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+
+    .drawer-close:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .drawer a {
+      display: block;
+      padding: 0.85rem 1rem;
+      color: #334155;
+      font-weight: 500;
+      font-size: 1.05rem;
+      border-radius: 12px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .drawer a:hover {
+      background: #f1f5f9;
+      color: #2563eb;
+    }
+
+    .drawer .drawer-cta {
+      margin-top: auto;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 0.9rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 600;
+    }
+
+    .drawer .drawer-cta:hover {
+      background: #1e293b;
+    }
+
+    /* ---------- RESPONSIVE BREAKPOINTS ---------- */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .navbar>.btn-outline {
+        display: none;
+      }
+
+      /* hero */
+      .hero-grid {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .hero-content {
+        flex: none;
+        width: 100%;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-content p {
+        font-size: 1.05rem;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* apps */
+      .apps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* services */
+      .service-cards {
+        flex-direction: column;
+      }
+
+      /* footer */
+      .footer-grid {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      /* CTA */
+      .cta-card h2 {
+        font-size: 1.8rem;
+      }
+
+      .cta-card p {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 
@@ -609,7 +796,28 @@
         <a href="#contact">Contact</a>
       </div>
       <a href="#" class="btn-outline"><i class="fa-regular fa-comment" style="margin-right: 6px;"></i>Let's talk</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
     </nav>
+
+    <!-- Drawer overlay -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- Right slide-in drawer -->
+    <div class="drawer" id="navDrawer">
+      <div class="drawer-header">
+        <div class="drawer-logo">webdevv<span>.</span></div>
+        <button class="drawer-close" id="drawerClose" aria-label="Close menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <a href="#home" class="drawer-link">Home</a>
+      <a href="#apps" class="drawer-link">Apps</a>
+      <a href="#services" class="drawer-link">Services</a>
+      <a href="#contact" class="drawer-link">Contact</a>
+      <a href="#" class="drawer-cta"><i class="fa-regular fa-comment" style="margin-right:6px"></i>Let's talk</a>
+    </div>
   </header>
 
   <main>
@@ -870,6 +1078,32 @@
 
       window.addEventListener('scroll', changeActiveNav);
       changeActiveNav(); // run on load
+
+      // ----- MOBILE DRAWER LOGIC -----
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const navDrawer = document.getElementById('navDrawer');
+      const drawerOverlay = document.getElementById('drawerOverlay');
+      const drawerClose = document.getElementById('drawerClose');
+
+      function openDrawer() {
+        navDrawer.classList.add('open');
+        drawerOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeDrawer() {
+        navDrawer.classList.remove('open');
+        drawerOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      if (hamburgerBtn) hamburgerBtn.addEventListener('click', openDrawer);
+      if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+      if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+      // Close drawer on any drawer link tap
+      document.querySelectorAll('.drawer a').forEach(link => {
+        link.addEventListener('click', closeDrawer);
+      });
 
     })();
   </script>
