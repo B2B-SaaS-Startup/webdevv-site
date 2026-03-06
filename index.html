@@ -782,6 +782,216 @@
         font-size: 1rem;
       }
     }
+
+    /* ========== ANIMATIONS & SCROLL EFFECTS ========== */
+
+    /* --- Keyframes --- */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.35);
+      }
+
+      50% {
+        box-shadow: 0 0 0 12px rgba(37, 99, 235, 0);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes heroEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Hero entrance (immediate) --- */
+    .hero-badge {
+      animation: heroEntrance 0.5s ease both;
+      animation-delay: 0.1s;
+    }
+
+    .hero-content h1 {
+      animation: heroEntrance 0.6s ease both;
+      animation-delay: 0.25s;
+    }
+
+    .hero-content p {
+      animation: heroEntrance 0.6s ease both;
+      animation-delay: 0.4s;
+    }
+
+    .hero-cta {
+      animation: heroEntrance 0.6s ease both;
+      animation-delay: 0.55s;
+    }
+
+    .hero-stats {
+      animation: heroEntrance 0.6s ease both;
+      animation-delay: 0.7s;
+    }
+
+    .hero-visual {
+      animation: slideInRight 0.7s ease both;
+      animation-delay: 0.4s;
+    }
+
+    /* Code snippet floating */
+    .code-snip {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* --- Scroll-reveal base --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    .reveal-delay-5 {
+      transition-delay: 0.5s;
+    }
+
+    .reveal-delay-6 {
+      transition-delay: 0.6s;
+    }
+
+    /* --- Enhanced card hover / tap --- */
+    .card,
+    .app-card,
+    .stat-item {
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .card:hover,
+    .app-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 24px 40px -10px rgba(37, 99, 235, 0.15);
+    }
+
+    .card:active,
+    .app-card:active,
+    .stat-item:active {
+      transform: scale(0.97);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .stat-item:hover {
+      transform: translateY(-4px) scale(1.03);
+      animation: pulse 1.4s ease infinite;
+    }
+
+    /* --- Button tap effect --- */
+    .btn-primary:active,
+    .btn-ghost:active,
+    .btn-white:active,
+    .btn-outline:active {
+      transform: scale(0.95);
+    }
+
+    .app-link:active {
+      transform: scale(0.96);
+    }
+
+    /* --- Navbar scroll shadow --- */
+    .navbar.scrolled {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    /* --- Section title underline animation --- */
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #2563eb, #93c5fd);
+      border-radius: 2px;
+      transition: width 0.5s ease;
+    }
+
+    .visible .section-title::after,
+    .section-title.visible::after {
+      width: 60px;
+    }
   </style>
 </head>
 
@@ -1104,6 +1314,35 @@
       document.querySelectorAll('.drawer a').forEach(link => {
         link.addEventListener('click', closeDrawer);
       });
+
+      // ----- NAVBAR SCROLL SHADOW -----
+      window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 10);
+      });
+
+      // ----- SCROLL REVEAL (Intersection Observer) -----
+      const revealEls = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Animate section title underline
+            const title = entry.target.querySelector('.section-title');
+            if (title) title.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(el => revealObserver.observe(el));
+
+      // Also animate section titles directly
+      const sectionTitles = document.querySelectorAll('.section-title');
+      const titleObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.2 });
+      sectionTitles.forEach(t => titleObserver.observe(t));
 
     })();
   </script>
