@@ -4,7 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>webdevv · software company</title>
+  <title>webdevv &middot; software company</title>
+  <meta name="description" content="webdevv builds powerful, future-proof software tailored to your business &mdash; from MVP to enterprise.">
+  <meta name="keywords" content="software development, web apps, mobile apps, cloud, AI, devops, React, Node, Python">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://webdevv.io">
+  <link rel="sitemap" type="application/xml" href="https://webdevv.io/sitemap.xml">
+  <meta property="og:title" content="webdevv &middot; software company">
+  <meta property="og:description" content="webdevv builds powerful, future-proof software tailored to your business.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://webdevv.io">
+  <meta property="og:image" content="https://webdevv.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="webdevv &middot; software company">
+  <meta name="twitter:description" content="webdevv builds powerful, future-proof software &mdash; from MVP to enterprise.">
+  <meta name="twitter:image" content="https://webdevv.io/og-image.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"webdevv","url":"https://webdevv.io","email":"support@webdevv.io","description":"webdevv builds powerful software from MVP to enterprise.","serviceType":["Web Development","Mobile App Development","Cloud & DevOps","AI & Data"],"areaServed":"Worldwide"}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap">
   <!-- Font Awesome 6 (free) for crisp icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Vercel Analytics -->
@@ -393,114 +413,21 @@
       transform: translateX(4px);
     }
 
-    /* ---------- APPS ---------- */
-    .apps {
-      padding: 5rem 0;
-      background: #f8fafc;
-      border-top: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
+    /* ---------- HOW WE WORK ---------- */
+    .process { padding: 5rem 0; background: #f8fafc; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 3rem; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 28px; left: 12.5%; right: 12.5%; height: 2px; background: linear-gradient(90deg, #2563eb, #93c5fd); z-index: 0; }
+    .process-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 1.5rem; position: relative; z-index: 1; }
+    .process-step-num { width: 56px; height: 56px; border-radius: 50%; background: white; border: 2px solid #2563eb; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800; color: #2563eb; margin-bottom: 1.2rem; box-shadow: 0 0 0 6px #f8fafc; transition: all 0.2s; }
+    .process-step:hover .process-step-num { background: #2563eb; color: white; transform: scale(1.1); }
+    .process-step h3 { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 0.5rem; }
+    .process-step p { font-size: 0.88rem; color: #64748b; line-height: 1.6; }
+    @media (max-width: 768px) {
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-steps::before { display: none; }
     }
 
-    .apps-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .app-card {
-      background: #ffffff;
-      border-radius: 1.5rem;
-      padding: 2rem;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.03);
-      transition: all 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
-    }
-
-    .app-card:hover {
-      box-shadow: 0 20px 25px -10px rgba(0, 0, 0, 0.08);
-      transform: translateY(-4px);
-      border-color: #cbd5e1;
-    }
-
-    .app-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      color: white;
-      box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.1);
-    }
-
-    .app-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 0.6rem;
-    }
-
-    .app-desc {
-      color: #475569;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      flex: 1;
-    }
-
-    .app-link {
-      color: #0f172a;
-      font-weight: 600;
-      font-size: 0.9rem;
-      background: #f1f5f9;
-      padding: 0.6rem 1.2rem;
-      border-radius: 30px;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .app-link:hover {
-      background: #e2e8f0;
-    }
-
-    /* specific app colors */
-    .bg-blue {
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
-    }
-
-    .bg-green {
-      background: linear-gradient(135deg, #10b981, #059669);
-    }
-
-    .bg-purple {
-      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-    }
-
-    .bg-orange {
-      background: linear-gradient(135deg, #f97316, #ea580c);
-    }
-
-    .bg-pink {
-      background: linear-gradient(135deg, #ec4899, #db2777);
-    }
-
-    .bg-teal {
-      background: linear-gradient(135deg, #14b8a6, #0d9488);
-    }
-
-    /* ---------- CTA SECTION ---------- */
+        /* ---------- CTA SECTION ---------- */
     .cta-section {
       padding: 0 0 4.5rem;
       background: white;
@@ -994,6 +921,77 @@
     .section-title.visible::after {
       width: 60px;
     }
+
+    /* ---------- PORTFOLIO ---------- */
+    .portfolio { padding: 5rem 0; background: white; border-top: 1px solid #e2e8f0; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .portfolio-card { border-radius: 1.5rem; overflow: hidden; border: 1px solid #e2e8f0; background: #fff; transition: all 0.25s ease; display: flex; flex-direction: column; }
+    .portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 24px 40px -10px rgba(37,99,235,0.13); border-color: #bfdbfe; }
+    .portfolio-thumb { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative; overflow: hidden; background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 60%, #38bdf8 100%); }
+    .portfolio-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(15,23,42,0.25) 100%); }
+    .portfolio-thumb-label { position: absolute; bottom: 1rem; left: 1.2rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); color: white; font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); z-index: 1; letter-spacing: 0.5px; text-transform: uppercase; }
+    .portfolio-body { padding: 1.6rem 1.8rem 2rem; flex: 1; display: flex; flex-direction: column; }
+    .portfolio-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .portfolio-tag { background: #eff6ff; color: #2563eb; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 20px; }
+    .portfolio-body h3 { font-size: 1.3rem; font-weight: 700; color: #0f172a; margin-bottom: 0.5rem; }
+    .portfolio-body p { color: #475569; font-size: 0.95rem; flex: 1; margin-bottom: 1.4rem; }
+    .portfolio-link { display: inline-flex; align-items: center; gap: 0.4rem; color: #2563eb; font-weight: 600; font-size: 0.9rem; }
+    .portfolio-link i { transition: transform 0.15s; font-size: 0.8rem; }
+    .portfolio-link:hover i { transform: translateX(4px); }
+
+    /* ---------- CONTACT FORM ---------- */
+    .contact-section { padding: 5rem 0; background: #f8fafc; border-top: 1px solid #e2e8f0; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+    .contact-info h2 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; color: #0f172a; margin-bottom: 1rem; }
+    .contact-info p { color: #475569; font-size: 1.05rem; margin-bottom: 2rem; }
+    .contact-detail { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1rem; color: #334155; font-size: 0.97rem; }
+    .contact-detail i { width: 36px; height: 36px; background: #eff6ff; color: #2563eb; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .contact-form-card { background: white; border-radius: 2rem; padding: 2.5rem; border: 1px solid #e2e8f0; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
+    .form-group label { font-size: 0.88rem; font-weight: 600; color: #334155; }
+    .form-group input, .form-group select, .form-group textarea { border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 0.75rem 1rem; font-size: 0.95rem; font-family: inherit; color: #0f172a; background: #f8fafc; transition: border-color 0.2s, box-shadow 0.2s; outline: none; width: 100%; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #2563eb; background: white; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-submit { width: 100%; background: #0f172a; color: white; font-weight: 700; padding: 0.95rem; border-radius: 40px; font-size: 1rem; border: none; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .form-submit:hover { background: #1e293b; transform: scale(1.01); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-success { display: none; text-align: center; padding: 2rem; }
+    .form-success i { font-size: 2.5rem; margin-bottom: 1rem; display: block; color: #059669; }
+    .form-success h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: #0f172a; }
+    .form-success p { color: #475569; font-size: 0.95rem; }
+
+    /* ---------- LIVE CHAT ---------- */
+    .chat-bubble { position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 9000; }
+    .chat-toggle { width: 58px; height: 58px; border-radius: 50%; background: #2563eb; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; box-shadow: 0 8px 24px rgba(37,99,235,0.4); transition: transform 0.2s, background 0.2s; animation: pulse 2.5s ease infinite; }
+    .chat-toggle:hover { background: #1d4ed8; transform: scale(1.08); }
+    .chat-badge { position: absolute; top: -2px; right: -2px; background: #ef4444; color: white; font-size: 0.65rem; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid white; }
+    .chat-window { position: absolute; bottom: 70px; right: 0; width: 320px; background: white; border-radius: 1.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 1px solid #e2e8f0; overflow: hidden; display: none; flex-direction: column; max-height: 480px; }
+    .chat-window.open { display: flex; animation: fadeUp 0.25s ease both; }
+    .chat-header { background: #0f172a; color: white; padding: 1.2rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; }
+    .chat-header-avatar { width: 36px; height: 36px; border-radius: 50%; background: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .chat-header-info h4 { font-size: 0.95rem; font-weight: 700; }
+    .chat-header-info span { font-size: 0.75rem; color: #94a3b8; display: flex; align-items: center; gap: 0.3rem; }
+    .chat-header-info span::before { content: ''; width: 7px; height: 7px; background: #22c55e; border-radius: 50%; display: inline-block; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; background: #f8fafc; }
+    .chat-msg { max-width: 80%; padding: 0.7rem 1rem; border-radius: 1rem; font-size: 0.88rem; line-height: 1.5; }
+    .chat-msg.bot { background: white; color: #1e293b; border: 1px solid #e2e8f0; border-bottom-left-radius: 4px; align-self: flex-start; }
+    .chat-msg.user { background: #2563eb; color: white; border-bottom-right-radius: 4px; align-self: flex-end; }
+    .chat-quick-replies { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0 1.2rem 1rem; background: #f8fafc; }
+    .quick-reply { background: white; border: 1.5px solid #e2e8f0; color: #334155; font-size: 0.78rem; font-weight: 600; padding: 0.4rem 0.9rem; border-radius: 20px; cursor: pointer; transition: 0.15s; }
+    .quick-reply:hover { border-color: #2563eb; color: #2563eb; background: #eff6ff; }
+    .chat-input-row { display: flex; gap: 0.5rem; padding: 1rem; border-top: 1px solid #e2e8f0; background: white; }
+    .chat-input { flex: 1; border: 1.5px solid #e2e8f0; border-radius: 30px; padding: 0.55rem 1rem; font-size: 0.88rem; font-family: inherit; outline: none; transition: border-color 0.2s; }
+    .chat-input:focus { border-color: #2563eb; }
+    .chat-send { width: 36px; height: 36px; background: #2563eb; border: none; border-radius: 50%; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: background 0.15s; flex-shrink: 0; }
+    .chat-send:hover { background: #1d4ed8; }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr) !important; }
+    }
   </style>
 </head>
 
@@ -1003,11 +1001,12 @@
       <div class="logo">webdevv<span>.</span></div>
       <div class="nav-links">
         <a href="#home">Home</a>
-        <a href="#apps">Apps</a>
+        <a href="#process">Process</a>
         <a href="#services">Services</a>
+        <a href="#portfolio">Work</a>
         <a href="#contact">Contact</a>
       </div>
-      <a href="#" class="btn-outline"><i class="fa-regular fa-comment" style="margin-right: 6px;"></i>Let's talk</a>
+      <a href="#contact" class="btn-outline"><i class="fa-regular fa-comment" style="margin-right: 6px;"></i>Let's talk</a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
         <i class="fa-solid fa-chevron-right"></i>
       </button>
@@ -1025,10 +1024,11 @@
         </button>
       </div>
       <a href="#home" class="drawer-link">Home</a>
-      <a href="#apps" class="drawer-link">Apps</a>
+      <a href="#process" class="drawer-link">Process</a>
       <a href="#services" class="drawer-link">Services</a>
+      <a href="#portfolio" class="drawer-link">Work</a>
       <a href="#contact" class="drawer-link">Contact</a>
-      <a href="#" class="drawer-cta"><i class="fa-regular fa-comment" style="margin-right:6px"></i>Let's talk</a>
+      <a href="#contact" class="drawer-cta"><i class="fa-regular fa-comment" style="margin-right:6px"></i>Let's talk</a>
     </div>
   </header>
 
@@ -1043,7 +1043,7 @@
           <div class="hero-cta">
             <button class="btn-primary" id="exploreBtn"><i class="fa-regular fa-hand-pointer"></i> Explore
               services</button>
-            <button class="btn-ghost"><i class="fa-regular fa-calendar"></i> Book a call</button>
+            <button class="btn-ghost" id="bookBtn"><i class="fa-regular fa-calendar"></i> Book a call</button>
           </div>
           <div class="hero-stats" id="work">
             <div class="stat-item">
@@ -1053,6 +1053,14 @@
             <div class="stat-item">
               <h3>$1B+</h3>
               <p>processed through<br>our secure APIs</p>
+            </div>
+            <div class="stat-item">
+              <h3>MVP</h3>
+              <p>to production<br>in weeks, not months</p>
+            </div>
+            <div class="stat-item">
+              <h3>24h</h3>
+              <p>response time<br>guaranteed</p>
             </div>
           </div>
         </div>
@@ -1071,84 +1079,31 @@
       </div>
     </section>
 
-    <!-- APPS & PRODUCTS -->
-    <section class="apps" id="apps">
+    <!-- HOW WE WORK -->
+    <section class="process" id="process">
       <div class="container">
-        <div class="apps-header reveal">
-          <h2 class="section-title">discover our apps</h2>
-          <p class="section-desc" style="margin: 0 auto;">A suite of interconnected tools engineered to accelerate your
-            workflow.</p>
-        </div>
-
-        <div class="apps-grid">
-          <!-- App 1 -->
-          <div class="app-card reveal reveal-delay-1">
-            <div class="app-icon bg-blue">
-              <i class="fa-solid fa-chart-pie"></i>
-            </div>
-            <h3 class="app-title">Webdevv Analytics</h3>
-            <p class="app-desc">Real-time usage insights, conversion tracking, and predictive cohort analysis all in one
-              place.</p>
-            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
-                style="margin-left:4px;"></i></a>
+        <h2 class="section-title reveal">how we work</h2>
+        <p class="section-desc reveal reveal-delay-1">A simple, transparent process — from your first message to a live product.</p>
+        <div class="process-steps">
+          <div class="process-step reveal reveal-delay-1">
+            <div class="process-step-num">1</div>
+            <h3>Discovery</h3>
+            <p>We learn about your business, goals, and users. No jargon, no assumptions — just honest questions.</p>
           </div>
-
-          <!-- App 2 -->
-          <div class="app-card reveal reveal-delay-2">
-            <div class="app-icon bg-purple">
-              <i class="fa-solid fa-robot"></i>
-            </div>
-            <h3 class="app-title">Automate AI</h3>
-            <p class="app-desc">Train AI models on your own documents. Deploy custom conversational agents within
-              minutes.</p>
-            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
-                style="margin-left:4px;"></i></a>
+          <div class="process-step reveal reveal-delay-2">
+            <div class="process-step-num">2</div>
+            <h3>Design &amp; Plan</h3>
+            <p>We map out the architecture, user flows, and tech stack. You get a clear scope and timeline upfront.</p>
           </div>
-
-          <!-- App 3 -->
-          <div class="app-card reveal reveal-delay-3">
-            <div class="app-icon bg-green">
-              <i class="fa-solid fa-shield-halved"></i>
-            </div>
-            <h3 class="app-title">Vault Sec</h3>
-            <p class="app-desc">Centralize your API keys, credentials, and environment variables with military-grade
-              encryption.</p>
-            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
-                style="margin-left:4px;"></i></a>
+          <div class="process-step reveal reveal-delay-3">
+            <div class="process-step-num">3</div>
+            <h3>Build</h3>
+            <p>Agile sprints with regular check-ins. You see real progress every week — no black-box development.</p>
           </div>
-
-          <!-- App 4 -->
-          <div class="app-card reveal reveal-delay-4">
-            <div class="app-icon bg-orange">
-              <i class="fa-solid fa-bolt"></i>
-            </div>
-            <h3 class="app-title">Site Forge</h3>
-            <p class="app-desc">A visual site builder that output clean React and Tailwind code under the hood.</p>
-            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
-                style="margin-left:4px;"></i></a>
-          </div>
-
-          <!-- App 5 -->
-          <div class="app-card reveal reveal-delay-5">
-            <div class="app-icon bg-pink">
-              <i class="fa-solid fa-cloud-arrow-up"></i>
-            </div>
-            <h3 class="app-title">Cloud Deploy</h3>
-            <p class="app-desc">Push your code to production securely without needing to touch a server or configure
-              k8s.</p>
-            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
-                style="margin-left:4px;"></i></a>
-          </div>
-
-          <!-- App 6 -->
-          <div class="app-card reveal reveal-delay-6">
-            <div class="app-icon bg-teal">
-              <i class="fa-solid fa-envelope-open-text"></i>
-            </div>
-            <h3 class="app-title">Mail Flow</h3>
-            <p class="app-desc">Design, automate, and track transactional emails and mass marketing campaigns.</p>
-            <a href="#" class="app-link">Open App <i class="fa-solid fa-arrow-right-long"
-                style="margin-left:4px;"></i></a>
+          <div class="process-step reveal reveal-delay-4">
+            <div class="process-step-num">4</div>
+            <h3>Launch &amp; Support</h3>
+            <p>We deploy, monitor, and stay on hand. Your product is live and we are still in your corner.</p>
           </div>
         </div>
       </div>
@@ -1165,42 +1120,177 @@
             <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
             <h3>web apps</h3>
             <p>React, Vue, Node, Python — responsive, performant, and secure web solutions.</p>
-            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#contact" class="card-link">get in touch <i class="fa-solid fa-arrow-right"></i></a>
           </div>
           <div class="card reveal reveal-delay-2">
             <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
             <h3>mobile & cross‑platform</h3>
             <p>iOS & Android with Flutter, Kotlin, Swift, or React Native.</p>
-            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#contact" class="card-link">get in touch <i class="fa-solid fa-arrow-right"></i></a>
           </div>
           <div class="card reveal reveal-delay-3">
             <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
             <h3>cloud & devops</h3>
             <p>AWS, Azure, GCP, CI/CD, k8s – scalable infrastructure that just works.</p>
-            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#contact" class="card-link">get in touch <i class="fa-solid fa-arrow-right"></i></a>
           </div>
           <div class="card reveal reveal-delay-4">
             <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
             <h3>AI & data</h3>
             <p>Custom ML models, LLM integration, analytics and intelligent automation.</p>
-            <a href="#" class="card-link">learn more <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#contact" class="card-link">get in touch <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <h2 class="section-title reveal">our work</h2>
+        <p class="section-desc reveal reveal-delay-1">One product live, more in the pipeline.</p>
+        <div class="portfolio-grid">
+          <div class="portfolio-card reveal reveal-delay-1">
+            <div class="portfolio-thumb" style="background: linear-gradient(135deg, #0f4c81 0%, #1a7abf 55%, #38bdf8 100%);">
+              <i class="fa-solid fa-pills" style="color:rgba(255,255,255,0.9);position:relative;z-index:1;"></i>
+              <span class="portfolio-thumb-label">Web App &middot; 2025</span>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">React</span>
+                <span class="portfolio-tag">Node.js</span>
+                <span class="portfolio-tag">PostgreSQL</span>
+                <span class="portfolio-tag">Supabase</span>
+              </div>
+              <h3>Pharmacy Pilot</h3>
+              <p>A full-stack pharmacy management platform streamlining daily operations &mdash; inventory, staff, and workflows &mdash; all in one place.</p>
+              <a href="https://pharmacy-pilot.webdevv.io" target="_blank" rel="noopener" class="portfolio-link">View live app <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="portfolio-card reveal reveal-delay-2" style="border:2px dashed #e2e8f0;background:#fafbfc;">
+            <div class="portfolio-thumb" style="background:linear-gradient(135deg,#f1f5f9,#e2e8f0);">
+              <i class="fa-solid fa-plus" style="color:#94a3b8;position:relative;z-index:1;font-size:2.5rem;"></i>
+            </div>
+            <div class="portfolio-body">
+              <div class="portfolio-tags">
+                <span class="portfolio-tag" style="background:#f1f5f9;color:#64748b;">Your project</span>
+              </div>
+              <h3 style="color:#64748b;">Could be yours</h3>
+              <p style="color:#94a3b8;">We are actively taking on new clients. Let's build something great together.</p>
+              <a href="#contact" class="portfolio-link">Start a conversation <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <h2>let's build together</h2>
+            <p>Tell us about your project and we will get back to you within 24 hours. We work with clients worldwide.</p>
+            <div class="contact-detail">
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:support@webdevv.io" style="color:#334155;">support@webdevv.io</a>
+            </div>
+            <div class="contact-detail">
+              <i class="fa-solid fa-globe"></i>
+              <span>Serving clients worldwide</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fa-solid fa-clock"></i>
+              <span>Response within 24h</span>
+            </div>
+          </div>
+          <div class="contact-form-card reveal reveal-delay-1">
+            <div id="contactFormWrap">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-name">Your name</label>
+                  <input type="text" id="cf-name" placeholder="Jane Smith" autocomplete="name">
+                </div>
+                <div class="form-group">
+                  <label for="cf-email">Email address</label>
+                  <input type="email" id="cf-email" placeholder="jane@company.com" autocomplete="email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cf-company">Company or Project name</label>
+                <input type="text" id="cf-company" placeholder="Acme Inc.">
+              </div>
+              <div class="form-group">
+                <label for="cf-service">What do you need?</label>
+                <select id="cf-service">
+                  <option value="" disabled selected>Select a service</option>
+                  <option>Web App Development</option>
+                  <option>Mobile App</option>
+                  <option>Cloud and DevOps</option>
+                  <option>AI and Data</option>
+                  <option>UX/UI Design</option>
+                  <option>Other / Not sure yet</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="cf-msg">Tell us about your project</label>
+                <textarea id="cf-msg" placeholder="Briefly describe what you are building, your timeline, and requirements..."></textarea>
+              </div>
+              <button class="form-submit" id="formSubmitBtn">
+                <i class="fa-regular fa-paper-plane"></i> Send message
+              </button>
+            </div>
+            <div class="form-success" id="formSuccess">
+              <i class="fa-solid fa-circle-check"></i>
+              <h3>Message sent!</h3>
+              <p>Thanks for reaching out. A webdevv engineer will reply to <strong id="successEmail"></strong> within 24 hours.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CALL TO ACTION -->
-    <section class="cta-section" id="contact">
+    <section class="cta-section">
       <div class="container">
         <div class="cta-card reveal">
           <h2>ready to build something great?</h2>
-          <p>Let’s talk about your idea — we’ll help you shape it, build it, and launch it.</p>
-          <button class="btn-white" id="contactBtn"><i class="fa-regular fa-paper-plane"
-              style="margin-right: 8px;"></i>Start a conversation</button>
+          <p>Let's talk about your idea — we'll help you shape it, build it, and launch it.</p>
+          <button class="btn-white" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><i class="fa-regular fa-paper-plane" style="margin-right: 8px;"></i>Start a conversation</button>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- LIVE CHAT WIDGET -->
+  <div class="chat-bubble" id="chatBubble">
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div class="chat-header-avatar"><i class="fa-solid fa-headset"></i></div>
+        <div class="chat-header-info">
+          <h4>webdevv support</h4>
+          <span>Online now</span>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg bot">Hi! We are the webdevv team. How can we help you today?</div>
+      </div>
+      <div class="chat-quick-replies" id="quickReplies">
+        <button class="quick-reply" data-msg="I have a project idea">I have a project idea</button>
+        <button class="quick-reply" data-msg="What is your pricing?">Pricing</button>
+        <button class="quick-reply" data-msg="How long does a project take?">Timelines</button>
+        <button class="quick-reply" data-msg="I want to see your work">See your work</button>
+      </div>
+      <div class="chat-input-row">
+        <input class="chat-input" id="chatInput" type="text" placeholder="Type a message..." autocomplete="off">
+        <button class="chat-send" id="chatSend"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle" aria-label="Open chat">
+      <i class="fa-solid fa-comment-dots"></i>
+      <span class="chat-badge">1</span>
+    </button>
+  </div>
 
   <footer class="footer">
     <div class="container">
@@ -1234,7 +1324,7 @@
         </div>
       </div>
       <div class="copyright">
-        &copy; 2023 webdevv &middot; All rights reserved.
+        &copy; 2026 webdevv &middot; All rights reserved.
       </div>
     </div>
   </footer>
@@ -1346,6 +1436,85 @@
         });
       }, { threshold: 0.2 });
       sectionTitles.forEach(t => titleObserver.observe(t));
+
+
+      // Book a call
+      const bookBtn = document.getElementById('bookBtn');
+      if (bookBtn) bookBtn.addEventListener('click', () => document.getElementById('contact').scrollIntoView({behavior:'smooth'}));
+
+      // Contact form
+      const formSubmitBtn = document.getElementById('formSubmitBtn');
+      if (formSubmitBtn) {
+        formSubmitBtn.addEventListener('click', () => {
+          const name = document.getElementById('cf-name').value.trim();
+          const email = document.getElementById('cf-email').value.trim();
+          const service = document.getElementById('cf-service').value;
+          const msg = document.getElementById('cf-msg').value.trim();
+          if (!name || !email || !service || !msg) { alert('Please fill in all required fields.'); return; }
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+          formSubmitBtn.disabled = true;
+          formSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+          const subject = encodeURIComponent('New enquiry: ' + service);
+          const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nCompany: ' + (document.getElementById('cf-company').value || 'N/A') + '\nService: ' + service + '\n\n' + msg);
+          setTimeout(() => {
+            window.location.href = 'mailto:support@webdevv.io?subject=' + subject + '&body=' + body;
+            document.getElementById('contactFormWrap').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+            document.getElementById('successEmail').textContent = email;
+          }, 600);
+        });
+      }
+
+      // Chat widget
+      const chatToggle = document.getElementById('chatToggle');
+      const chatWindow = document.getElementById('chatWindow');
+      const chatBadge = document.querySelector('.chat-badge');
+      const chatMessages = document.getElementById('chatMessages');
+      const chatInput = document.getElementById('chatInput');
+      const chatSend = document.getElementById('chatSend');
+      let chatOpen = false;
+
+      const botReplies = {
+        'I have a project idea': 'Exciting! Fill out the contact form below and we will reply within 24h.',
+        'What is your pricing?': 'Most projects start from $5k for MVPs. We will give you a detailed quote after a quick discovery call.',
+        'How long does a project take?': 'A typical MVP takes 4-8 weeks. Larger projects run 3-6 months. Clear timelines, no surprises.',
+        'I want to see your work': 'Check out Pharmacy Pilot in our Work section above!'
+      };
+
+      function addMsg(text, type) {
+        const m = document.createElement('div');
+        m.className = 'chat-msg ' + type;
+        m.textContent = text;
+        chatMessages.appendChild(m);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      chatToggle.addEventListener('click', () => {
+        chatOpen = !chatOpen;
+        chatWindow.classList.toggle('open', chatOpen);
+        if (chatBadge) chatBadge.style.display = 'none';
+        if (chatOpen) chatInput.focus();
+      });
+
+      document.querySelectorAll('.quick-reply').forEach(btn => {
+        btn.addEventListener('click', () => {
+          addMsg(btn.dataset.msg, 'user');
+          document.getElementById('quickReplies').style.display = 'none';
+          setTimeout(() => addMsg(botReplies[btn.dataset.msg] || 'Thanks! Email us at support@webdevv.io', 'bot'), 600);
+        });
+      });
+
+      function sendChat() {
+        const val = chatInput.value.trim();
+        if (!val) return;
+        addMsg(val, 'user');
+        chatInput.value = '';
+        document.getElementById('quickReplies').style.display = 'none';
+        setTimeout(() => addMsg('Thanks! We will follow up at support@webdevv.io or fill out contact form for a faster response.', 'bot'), 600);
+      }
+
+      chatSend.addEventListener('click', sendChat);
+      chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
 
     })();
   </script>
