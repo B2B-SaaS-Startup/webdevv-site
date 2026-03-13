@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://webdevv.io/sitemap.xml
