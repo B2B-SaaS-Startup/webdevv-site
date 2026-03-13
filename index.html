@@ -1089,6 +1089,19 @@
       .form-row { grid-template-columns: 1fr; }
       .portfolio-grid { grid-template-columns: 1fr; }
       .hero-stats { grid-template-columns: repeat(2, 1fr) !important; }
+      .portfolio-body p {
+        display: none;
+      }
+      .stat-item {
+        padding: 1rem;
+      }
+      .stat-item h3 {
+        font-size: 2rem;
+        margin-bottom: 0.4rem;
+      }
+      .stat-item p {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -1151,8 +1164,8 @@
               <p>avg. revenue<br>growth for clients</p>
             </div>
             <div class="stat-item">
-              <h3>$1B+</h3>
-              <p>processed through<br>our secure APIs</p>
+              <h3>50+</h3>
+              <p>features shipped<br>across all products</p>
             </div>
             <div class="stat-item">
               <h3>MVP</h3>
@@ -1188,22 +1201,22 @@
           <div class="process-step reveal reveal-delay-1">
             <div class="process-step-num">1</div>
             <h3>Discovery</h3>
-            <p>We learn about your business, goals, and users. No jargon, no assumptions — just honest questions.</p>
+            <p>Your goals, your users. No jargon, just honest questions.</p>
           </div>
           <div class="process-step reveal reveal-delay-2">
             <div class="process-step-num">2</div>
             <h3>Design &amp; Plan</h3>
-            <p>We map out the architecture, user flows, and tech stack. You get a clear scope and timeline upfront.</p>
+            <p>Clear architecture, scope, and timeline — upfront.</p>
           </div>
           <div class="process-step reveal reveal-delay-3">
             <div class="process-step-num">3</div>
             <h3>Build</h3>
-            <p>Agile sprints with regular check-ins. You see real progress every week — no black-box development.</p>
+            <p>Weekly sprints, real progress. No black-box builds.</p>
           </div>
           <div class="process-step reveal reveal-delay-4">
             <div class="process-step-num">4</div>
             <h3>Launch &amp; Support</h3>
-            <p>We deploy, monitor, and stay on hand. Your product is live and we are still in your corner.</p>
+            <p>We deploy, monitor, and stay in your corner.</p>
           </div>
         </div>
       </div>
@@ -1547,11 +1560,13 @@
         navDrawer.classList.add('open');
         drawerOverlay.classList.add('open');
         document.body.style.overflow = 'hidden';
+        document.getElementById('chatBubble').style.display = 'none'; // hide chat
       }
       function closeDrawer() {
         navDrawer.classList.remove('open');
         drawerOverlay.classList.remove('open');
         document.body.style.overflow = '';
+        document.getElementById('chatBubble').style.display = ''; // show chat again
       }
 
       if (hamburgerBtn) hamburgerBtn.addEventListener('click', openDrawer);
