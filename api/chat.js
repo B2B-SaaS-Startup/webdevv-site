@@ -38,25 +38,26 @@ module.exports = async function handler(req, res) {
   const client = new MongoClient(process.env.MONGODB_URI);
 
   try {
-    // Get AI reply from Claude
-    const aiRes = await fetch('https://api.anthropic.com/v1/messages', {
+    // Get AI reply from Groq
+    const aiRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01'
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}` 
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
+        model: 'llama-3.1-8b-instant',
         max_tokens: 200,
-        system: WEBDEVV_CONTEXT,
-        messages: [{ role: 'user', content: message }]
+        messages: [
+          { role: 'system', content: WEBDEVV_CONTEXT },
+          { role: 'user', content: message }
+        ]
       })
     });
 
     const aiData = await aiRes.json();
-    console.log('Anthropic response:', JSON.stringify(aiData));
-    const reply = aiData.content?.[0]?.text || 'Thanks for reaching out! Email us at support@webdevv.io and we will get back to you within 24 hours.';
+    console.log('Groq response:', JSON.stringify(aiData));
+    const reply = aiData.choices?.[0]?.message?.content || 'Thanks for reaching out! Email us at support@webdevv.io and we will get back to you within 24 hours.';
 
     // Save to MongoDB
     await client.connect();
