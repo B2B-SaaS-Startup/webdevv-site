@@ -1,8 +1,7 @@
-import { Resend } from 'resend';
-import { MongoClient } from 'mongodb';
+const { Resend } = require('resend');
+const { MongoClient } = require('mongodb');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const client = new MongoClient(process.env.MONGODB_URI);
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://webdevv.io');
@@ -18,8 +17,9 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
+  const client = new MongoClient(process.env.MONGODB_URI);
+
   try {
-    // Save to MongoDB
     await client.connect();
     const db = client.db('webdevv');
     await db.collection('enquiries').insertOne({
@@ -28,7 +28,6 @@ export default async function handler(req, res) {
       createdAt: new Date()
     });
 
-    // Send email via Resend
     await resend.emails.send({
       from: 'webdevv <support@webdevv.io>',
       to: 'support@webdevv.io',

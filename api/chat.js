@@ -1,8 +1,7 @@
-import { Resend } from 'resend';
-import { MongoClient } from 'mongodb';
+const { Resend } = require('resend');
+const { MongoClient } = require('mongodb');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const client = new MongoClient(process.env.MONGODB_URI);
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://webdevv.io');
@@ -14,6 +13,8 @@ export default async function handler(req, res) {
 
   const { message } = req.body;
   if (!message) return res.status(400).json({ error: 'Missing message' });
+
+  const client = new MongoClient(process.env.MONGODB_URI);
 
   try {
     await client.connect();

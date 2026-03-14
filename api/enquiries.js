@@ -1,12 +1,12 @@
-import { MongoClient } from 'mongodb';
-
-const client = new MongoClient(process.env.MONGODB_URI);
+const { MongoClient } = require('mongodb');
 
 export default async function handler(req, res) {
   const { password } = req.query;
   if (password !== process.env.ADMIN_PASSWORD) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
+
+  const client = new MongoClient(process.env.MONGODB_URI);
 
   try {
     await client.connect();
