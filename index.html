@@ -1664,12 +1664,6 @@
       const chatSend = document.getElementById('chatSend');
       let chatOpen = false;
 
-      const botReplies = {
-        'I have a project idea': 'Exciting! Fill out the contact form below and we will reply within 24h.',
-        'What is your pricing?': 'Most projects start from $5k for MVPs. We will give you a detailed quote after a quick discovery call.',
-        'How long does a project take?': 'A typical MVP takes 4-8 weeks. Larger projects run 3-6 months. Clear timelines, no surprises.',
-        'I want to see your work': 'Check out Pharmacy Pilot in our Work section above!'
-      };
 
       function addMsg(text, type) {
         const m = document.createElement('div');
@@ -1688,9 +1682,9 @@
 
       document.querySelectorAll('.quick-reply').forEach(btn => {
         btn.addEventListener('click', () => {
-          addMsg(btn.dataset.msg, 'user');
+          chatInput.value = btn.dataset.msg;
           document.getElementById('quickReplies').style.display = 'none';
-          setTimeout(() => addMsg(botReplies[btn.dataset.msg] || 'Thanks! Email us at support@webdevv.io', 'bot'), 600);
+          sendChat();
         });
       });
 
