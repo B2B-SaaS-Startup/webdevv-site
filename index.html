@@ -1701,17 +1701,27 @@
   chatInput.value = '';
   document.getElementById('quickReplies').style.display = 'none';
 
+  // Show typing indicator
+  const typing = document.createElement('div');
+  typing.className = 'chat-msg bot';
+  typing.id = 'typingIndicator';
+  typing.textContent = '...';
+  chatMessages.appendChild(typing);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
   try {
-    await fetch('/api/chat', {
+    const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: val })
     });
+    const data = await res.json();
+    document.getElementById('typingIndicator')?.remove();
+    addMsg(data.reply || 'Thanks! We will get back to you within 24 hours.', 'bot');
   } catch (err) {
-    console.error('Chat error:', err);
+    document.getElementById('typingIndicator')?.remove();
+    addMsg('Thanks! Email us at support@webdevv.io and we will get back to you shortly.', 'bot');
   }
-
-  setTimeout(() => addMsg('Thanks! We will follow up at support@webdevv.io or fill out the contact form for a faster response.', 'bot'), 600);
 }
 
       chatSend.addEventListener('click', sendChat);
