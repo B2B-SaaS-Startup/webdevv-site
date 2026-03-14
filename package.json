@@ -1,7 +1,7 @@
 {
   "name": "webdevv-site",
   "version": "1.0.0",
-  "engines": { "node": "18.x" },
+  "engines": { "node": "24.x" },
   "dependencies": {
     "mongodb": "^6.3.0",
     "resend": "^3.2.0"
