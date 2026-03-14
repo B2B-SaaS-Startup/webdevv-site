@@ -3,7 +3,7 @@ const { MongoClient } = require('mongodb');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://webdevv.io');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -39,8 +39,8 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ error: 'Server error' });
+    return res.status(500).json({ error: err.message });
   } finally {
     await client.close();
   }
-}
+};
