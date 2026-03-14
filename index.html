@@ -1029,7 +1029,7 @@
 
     /* ---------- PORTFOLIO ---------- */
     .portfolio { padding: 5rem 0; background: white; border-top: 1px solid #e2e8f0; }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
     .portfolio-card { border-radius: 1.5rem; overflow: hidden; border: 1px solid #e2e8f0; background: #fff; transition: all 0.25s ease; display: flex; flex-direction: column; }
     .portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 24px 40px -10px rgba(37,99,235,0.13); border-color: #bfdbfe; }
     .portfolio-thumb { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative; overflow: hidden; background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 60%, #38bdf8 100%); }
@@ -1265,44 +1265,69 @@
     </section>
 
     <!-- PORTFOLIO -->
-    <section class="portfolio" id="portfolio">
-      <div class="container">
-        <h2 class="section-title reveal">our work</h2>
-        <p class="section-desc reveal reveal-delay-1">One product live, more in the pipeline.</p>
-        <div class="portfolio-grid">
-          <div class="portfolio-card reveal reveal-delay-1">
-            <div class="portfolio-thumb" style="background: linear-gradient(135deg, #0f4c81 0%, #1a7abf 55%, #38bdf8 100%);">
-              <i class="fa-solid fa-pills" style="color:rgba(255,255,255,0.9);position:relative;z-index:1;"></i>
-              <span class="portfolio-thumb-label">Web App &middot; 2025</span>
-            </div>
-            <div class="portfolio-body">
-              <div class="portfolio-tags">
-                <span class="portfolio-tag">React</span>
-                <span class="portfolio-tag">Node.js</span>
-                <span class="portfolio-tag">PostgreSQL</span>
-                <span class="portfolio-tag">Supabase</span>
-              </div>
-              <h3>Pharmacy Pilot</h3>
-              <p>A full-stack pharmacy management platform streamlining daily operations &mdash; inventory, staff, and workflows &mdash; all in one place.</p>
-              <a href="https://pharmacy-pilot.webdevv.io" target="_blank" rel="noopener" class="portfolio-link">View live app <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <h2 class="section-title reveal">our work</h2>
+    <p class="section-desc reveal reveal-delay-1">Real products, real impact — across healthcare, e-commerce, and social.</p>
+    <div class="portfolio-grid">
+
+      <!-- Pharmacy Pilot -->
+      <div class="portfolio-card reveal reveal-delay-1">
+        <div class="portfolio-thumb" style="background: linear-gradient(135deg, #0f4c81 0%, #1a7abf 55%, #38bdf8 100%);">
+          <i class="fa-solid fa-pills" style="color:rgba(255,255,255,0.9);position:relative;z-index:1;"></i>
+          <span class="portfolio-thumb-label">Web App &middot; 2025</span>
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">React</span>
+            <span class="portfolio-tag">Node.js</span>
+            <span class="portfolio-tag">PostgreSQL</span>
+            <span class="portfolio-tag">Supabase</span>
           </div>
-          <div class="portfolio-card reveal reveal-delay-2" style="border:2px dashed #e2e8f0;background:#fafbfc;">
-            <div class="portfolio-thumb" style="background:linear-gradient(135deg,#f1f5f9,#e2e8f0);">
-              <i class="fa-solid fa-plus" style="color:#94a3b8;position:relative;z-index:1;font-size:2.5rem;"></i>
-            </div>
-            <div class="portfolio-body">
-              <div class="portfolio-tags">
-                <span class="portfolio-tag" style="background:#f1f5f9;color:#64748b;">Your project</span>
-              </div>
-              <h3 style="color:#64748b;">Could be yours</h3>
-              <p style="color:#94a3b8;">We are actively taking on new clients. Let's build something great together.</p>
-              <a href="#contact" class="portfolio-link">Start a conversation <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </div>
+          <h3>Pharmacy Pilot</h3>
+          <p>A full-stack pharmacy management platform streamlining daily operations — inventory, staff, and workflows — all in one place.</p>
+          <a href="https://pharmacy-pilot.webdevv.io" target="_blank" rel="noopener" class="portfolio-link">View live app <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
-    </section>
+
+      <!-- Shoptechwell -->
+      <div class="portfolio-card reveal reveal-delay-2">
+        <div class="portfolio-thumb" style="background: linear-gradient(135deg, #064e3b 0%, #059669 60%, #34d399 100%);">
+          <i class="fa-solid fa-bag-shopping" style="color:rgba(255,255,255,0.9);position:relative;z-index:1;"></i>
+          <span class="portfolio-thumb-label">E-commerce &middot; Coming Soon</span>
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-tags">
+            <span class="portfolio-tag">React</span>
+            <span class="portfolio-tag">Node.js</span>
+            <span class="portfolio-tag">PostgreSQL</span>
+            <span class="portfolio-tag">Stripe</span>
+          </div>
+          <h3>Shoptechwell</h3>
+          <p style="color:#94a3b8;font-style:italic;">Details coming soon.</p>
+          <span class="portfolio-link" style="color:#64748b;cursor:default;">Coming soon <i class="fa-solid fa-clock"></i></span>
+        </div>
+      </div>
+
+      
+      <!-- Could be yours -->
+      <div class="portfolio-card reveal reveal-delay-4" style="border:2px dashed #e2e8f0;background:#fafbfc;">
+        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#f1f5f9,#e2e8f0);">
+          <i class="fa-solid fa-plus" style="color:#94a3b8;position:relative;z-index:1;font-size:2.5rem;"></i>
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-tags">
+            <span class="portfolio-tag" style="background:#f1f5f9;color:#64748b;">Your project</span>
+          </div>
+          <h3 style="color:#64748b;">Could be yours</h3>
+          <p style="color:#94a3b8;">We are actively taking on new clients. Let's build something together.</p>
+          <a href="#contact" class="portfolio-link">Start a conversation <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <!-- CONTACT FORM -->
     <section class="contact-section" id="contact">
