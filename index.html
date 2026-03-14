@@ -1618,24 +1618,41 @@
       // Contact form
       const formSubmitBtn = document.getElementById('formSubmitBtn');
       if (formSubmitBtn) {
-        formSubmitBtn.addEventListener('click', () => {
-          const name = document.getElementById('cf-name').value.trim();
-          const email = document.getElementById('cf-email').value.trim();
-          const service = document.getElementById('cf-service').value;
-          const msg = document.getElementById('cf-msg').value.trim();
-          if (!name || !email || !service || !msg) { alert('Please fill in all required fields.'); return; }
-          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
-          formSubmitBtn.disabled = true;
-          formSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-          const subject = encodeURIComponent('New enquiry: ' + service);
-          const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nCompany: ' + (document.getElementById('cf-company').value || 'N/A') + '\nService: ' + service + '\n\n' + msg);
-          setTimeout(() => {
-            window.location.href = 'mailto:support@webdevv.io?subject=' + subject + '&body=' + body;
-            document.getElementById('contactFormWrap').style.display = 'none';
-            document.getElementById('formSuccess').style.display = 'block';
-            document.getElementById('successEmail').textContent = email;
-          }, 600);
-        });
+        formSubmitBtn.addEventListener('click', async () => {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const company = document.getElementById('cf-company').value.trim();
+  const service = document.getElementById('cf-service').value;
+  const message = document.getElementById('cf-msg').value.trim();
+
+  if (!name || !email || !service || !message) { alert('Please fill in all required fields.'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+
+  formSubmitBtn.disabled = true;
+  formSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, company, service, message })
+    });
+
+    if (res.ok) {
+      document.getElementById('contactFormWrap').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+      document.getElementById('successEmail').textContent = email;
+    } else {
+      alert('Something went wrong. Please try again or email us directly.');
+      formSubmitBtn.disabled = false;
+      formSubmitBtn.innerHTML = '<i class="fa-regular fa-paper-plane"></i> Send message';
+    }
+  } catch (err) {
+    alert('Something went wrong. Please try again.');
+    formSubmitBtn.disabled = false;
+    formSubmitBtn.innerHTML = '<i class="fa-regular fa-paper-plane"></i> Send message';
+  }
+});
       }
 
       // Chat widget
@@ -1677,14 +1694,25 @@
         });
       });
 
-      function sendChat() {
-        const val = chatInput.value.trim();
-        if (!val) return;
-        addMsg(val, 'user');
-        chatInput.value = '';
-        document.getElementById('quickReplies').style.display = 'none';
-        setTimeout(() => addMsg('Thanks! We will follow up at support@webdevv.io or fill out contact form for a faster response.', 'bot'), 600);
-      }
+      async function sendChat() {
+  const val = chatInput.value.trim();
+  if (!val) return;
+  addMsg(val, 'user');
+  chatInput.value = '';
+  document.getElementById('quickReplies').style.display = 'none';
+
+  try {
+    await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: val })
+    });
+  } catch (err) {
+    console.error('Chat error:', err);
+  }
+
+  setTimeout(() => addMsg('Thanks! We will follow up at support@webdevv.io or fill out the contact form for a faster response.', 'bot'), 600);
+}
 
       chatSend.addEventListener('click', sendChat);
       chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
