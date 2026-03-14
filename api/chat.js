@@ -55,6 +55,7 @@ module.exports = async function handler(req, res) {
     });
 
     const aiData = await aiRes.json();
+    console.log('Anthropic response:', JSON.stringify(aiData));
     const reply = aiData.content?.[0]?.text || 'Thanks for reaching out! Email us at support@webdevv.io and we will get back to you within 24 hours.';
 
     // Save to MongoDB
