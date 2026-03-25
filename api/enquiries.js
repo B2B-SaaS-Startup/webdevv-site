@@ -1,8 +1,10 @@
 const { MongoClient } = require('mongodb');
 
 module.exports = async function handler(req, res) {
-  const { password } = req.query;
-  if (password !== process.env.ADMIN_PASSWORD) {
+  const authHeader = req.headers['authorization'] || '';
+  const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
+
+  if (!token || token !== process.env.ADMIN_PASSWORD) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
